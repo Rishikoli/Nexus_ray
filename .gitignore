@@ -1,4 +1,35 @@
+# =========================
+# Node / Python
+# =========================
 node_modules/
 __pycache__/
 venv/
 .env
+
+# =========================
+# Models & Weights
+# =========================
+models/
+mistral-7b-*/
+*.bin
+*.onnx
+*.xml
+*.cache/
+
+# =========================
+# Logs & Debug
+# =========================
+*.log
+*_debug.log
+
+# =========================
+# Benchmarks / Notebooks
+# =========================
+*.ipynb
+.ipynb_checkpoints/
+
+# =========================
+# OS / Misc
+# =========================
+.DS_Store
+Thumbs.db
