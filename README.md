@@ -50,9 +50,7 @@ Designed for:
 
 ## 🏗️ Architecture
 
-<p align="center">
-  <img src="assets/architecture_diagram.svg" width="100%" alt="Nexus Ray Architecture">
-</p>
+![Nexus Ray Architecture](./assets/architecture_diagram.svg)
 
 ---
 
