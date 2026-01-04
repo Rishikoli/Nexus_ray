@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.svg" width="600" alt="Nexus Ray Logo">
+  <img src="assets/logo.svg" width="560" alt="Nexus Ray Logo">
 </p>
 
 <h1 align="center">Nexus Ray Framework</h1>
@@ -51,13 +51,55 @@ Designed for:
 ## 🏗️ Architecture
 
 ```mermaid
-graph TD
-    SDK[SDK / API] --> Orch[Orchestrator]
-    Orch --> Exec[Executors: LLM, Tool, Agent]
-    Exec --> Inf[OpenVINO LLM]
-    Exec --> Msg[Kafka Messaging]
-    Exec --> Mem[Vector Memory]
-    Msg --> Obs[Observability & Metrics]
+flowchart TD
+    subgraph Interface ["Interface Layer"]
+        SDK["Nexus SDK"]
+        API["FastAPI Backend"]
+    end
+
+    subgraph Core ["Nexus Core (Orchestrator)"]
+        direction TB
+        Graph["DAG Engine"]
+        Safety["Guardrails & Scoring"]
+    end
+
+    subgraph Runtime ["Execution Runtime"]
+        direction LR
+        OV["OpenVINO LLM"]
+        Tools["Agent Tools"]
+        Kafka["Kafka Messaging"]
+    end
+
+    subgraph Storage ["Intelligence Buffer"]
+        Mem["Vector Memory"]
+    end
+
+    subgraph Monitoring ["Observability"]
+        Live["Live Event Stream"]
+        Metrics["Prometheus/Grafana"]
+    end
+
+    %% Flow Connections
+    SDK ==> API
+    API ==> Graph
+    Graph --> Safety
+    Safety -.-> Runtime
+    Runtime ==> Mem
+    Runtime -.-> Live
+    Kafka ==> Monitoring
+
+    %% Styling
+    classDef interface fill:#E11D2E,stroke:#fff,stroke-width:2px,color:#fff
+    classDef core fill:#1e293b,stroke:#E11D2E,stroke-width:2px,color:#fff
+    classDef runtime fill:#334155,stroke:#0071C5,stroke-width:2px,color:#fff
+    classDef storage fill:#0f172a,stroke:#888,stroke-width:1px,color:#fff
+    classDef monitoring fill:#111,stroke:#10b981,stroke-width:2px,color:#fff
+
+    class SDK,API interface
+    class Graph,Safety core
+    class OV,Tools,Kafka runtime
+    class Mem storage
+    class Live,Metrics monitoring
 ```
 
 ---
@@ -117,23 +159,35 @@ Nexus Ray includes first-class benchmarking for OpenVINO-optimized LLMs.
 
 ### 🧪 Run Benchmarks
 ```bash
-# Verify & download models
+# 1️⃣ Verify & download models (Prerequisite)
 python scripts/verify_downloads.py
+python scripts/download_models.py
 
-# Run benchmarks
+# 2️⃣ Run the benchmark suite
 python scripts/benchmark_models.py
 
-# View results
+# 3️⃣ View results
 cat benchmark_results.json
 ```
+
+### 🛠️ Utility Scripts
+Nexus Ray includes a suite of specialized tools for developers and researchers:
+- **`check_hallucinations.py`** – Automated validation of LLM outputs against ground truth.
+- **`stress_test_industrial.py`** – High-load simulation for industrial agent workflows.
+- **`recover_from_cache.py`** – Manage and repair local model/result caches.
+- **`verify_downloads.py`** – Integrity checks for OpenVINO model artifacts.
+
+### 🔍 Troubleshooting
+- Use **`scripts/debug_imports.py`** to resolve environment/dependency issues.
+- Use **`scripts/debug_hf.py`** to diagnose Hugging Face model loading errors.
 
 ---
 
 ## 📚 Documentation
 <h3 align="center"> 
-  <a href="docs/quickstart_benchmarking.md">Benchmarking Guide</a> ⭐ NEW | 
-  <a href="docs/benchmarking.md">Intel OpenVINO Optimization</a> ⭐ NEW |
-  <a href="docs/dag_flows.md">DAG Workflows</a> ⭐ NEW
+  <a href="docs/quickstart_benchmarking.md">Benchmarking Guide</a> ⭐ **NEW** | 
+  <a href="docs/benchmarking.md">Intel OpenVINO Optimization</a> ⭐ **NEW** |
+  <a href="docs/dag_flows.md">DAG Workflows</a> ⭐ **NEW**
 </h3>
 
 ---
