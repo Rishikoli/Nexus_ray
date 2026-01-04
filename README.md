@@ -50,57 +50,9 @@ Designed for:
 
 ## 🏗️ Architecture
 
-```mermaid
-flowchart TD
-    subgraph Interface ["Interface Layer"]
-        SDK["Nexus SDK"]
-        API["FastAPI Backend"]
-    end
-
-    subgraph Core ["Nexus Core (Orchestrator)"]
-        direction TB
-        Graph["DAG Engine"]
-        Safety["Guardrails & Scoring"]
-    end
-
-    subgraph Runtime ["Execution Runtime"]
-        direction LR
-        OV["OpenVINO LLM"]
-        Tools["Agent Tools"]
-        Kafka["Kafka Messaging"]
-    end
-
-    subgraph Storage ["Intelligence Buffer"]
-        Mem["Vector Memory"]
-    end
-
-    subgraph Monitoring ["Observability"]
-        Live["Live Event Stream"]
-        Metrics["Prometheus/Grafana"]
-    end
-
-    %% Flow Connections
-    SDK ==> API
-    API ==> Graph
-    Graph --> Safety
-    Safety -.-> Runtime
-    Runtime ==> Mem
-    Runtime -.-> Live
-    Kafka ==> Monitoring
-
-    %% Styling
-    classDef interface fill:#E11D2E,stroke:#fff,stroke-width:2px,color:#fff
-    classDef core fill:#1e293b,stroke:#E11D2E,stroke-width:2px,color:#fff
-    classDef runtime fill:#334155,stroke:#0071C5,stroke-width:2px,color:#fff
-    classDef storage fill:#0f172a,stroke:#888,stroke-width:1px,color:#fff
-    classDef monitoring fill:#111,stroke:#10b981,stroke-width:2px,color:#fff
-
-    class SDK,API interface
-    class Graph,Safety core
-    class OV,Tools,Kafka runtime
-    class Mem storage
-    class Live,Metrics monitoring
-```
+<p align="center">
+  <img src="assets/architecture.svg" width="100%" alt="Nexus Ray Architecture">
+</p>
 
 ---
 
