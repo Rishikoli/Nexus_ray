@@ -33,17 +33,19 @@ graph TD
 Get a multi-agent system running in under 2 minutes:
 
 ```bash
-# 1. Install
-git clone https://github.com/your-org/nexus-ray.git
-cd nexus-ray
+# 1. Backend Server
 pip install -r requirements.txt
+uvicorn src.api.server:app --reload
 
-# 2. Configure (Optional: Set specific LLM path)
-export NEXUS_RAY_LLM__MODEL_PATH=models/mistral-7b-ov
-
-# 3. Run Demo
-python examples/demo_llm_working.py
+# 2. Frontend Dashboard (New Terminal)
+cd frontend
+npm install
+npm run dev
 ```
+
+Open **http://localhost:5173** to view the **Live Graph Dashboard** with:
+*   Real-time Agent logic & token metrics
+*   Human-in-the-Loop (HITL) approval requests
 
 ## 📦 What's Included
 
