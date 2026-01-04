@@ -58,9 +58,9 @@ It combines **DAG-based workflow orchestration**, **optimized local LLM inferenc
 
 ---
 
-## Architecture
+## <img src="./assets/Architecture_icon.gif" width="40" height="40" style="vertical-align: middle;"> Architecture
 
-![Nexus Ray Architecture](./assets/Architecture_icon.gif)
+![Nexus Ray Architecture](./assets/architecture_diagram.svg)
 
 ---
 
