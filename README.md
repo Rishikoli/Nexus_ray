@@ -51,7 +51,7 @@ Designed for:
 ## 🏗️ Architecture
 
 <p align="center">
-  <img src="assets/architecture.svg" width="100%" alt="Nexus Ray Architecture">
+  <img src="assets/architecture_diagram.svg" width="100%" alt="Nexus Ray Architecture">
 </p>
 
 ---
@@ -137,10 +137,18 @@ Nexus Ray includes a suite of specialized tools for developers and researchers:
 
 ## 📚 Documentation
 <h3 align="center"> 
-  <a href="docs/quickstart_benchmarking.md">Benchmarking Guide</a> ⭐ **NEW** | 
-  <a href="docs/benchmarking.md">Intel OpenVINO Optimization</a> ⭐ **NEW** |
-  <a href="docs/dag_flows.md">DAG Workflows</a> ⭐ **NEW**
+  <a href="docs/quickstart_benchmarking.md">Benchmarking Guide</a> | 
+  <a href="docs/dag_flows.md">DAG Workflows</a>
 </h3>
+
+### 🏛️ Formal Deliverables
+
+| Document | Description |
+| :--- | :--- |
+| **[System Design](docs/DESIGN.md)** | Formal Architecture, Component Breakdown & Design Decisions |
+| **[SDK API Reference](docs/SDK_API.md)** | `WorkflowBuilder` fluent API & Dev Guide |
+| **[Reference Agents](docs/REFERENCE_AGENTS.md)** | Documentation for Protein-Drug Discovery & Fab Optimization Agents |
+| **[Performance Report](docs/PERFORMANCE_REPORT.md)** | **Intel® OpenVINO™** Benchmarks (INT8 vs FP16) |
 
 ---
 
