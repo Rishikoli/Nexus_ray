@@ -1,51 +1,51 @@
 <svg width="920" height="520" viewBox="0 0 920 520" xmlns="http://www.w3.org/2000/svg">
-  <!-- Solid Background: Deep Violet/Slate -->
-  <rect x="0" y="0" width="920" height="520" fill="#0f0720" rx="12" />
+  <!-- Solid Background: Dark Slate/Blue -->
+  <rect x="0" y="0" width="920" height="520" fill="#020617" rx="12" />
 
   <!-- Interface -->
   <!-- Nexus SDK -->
-  <rect x="40" y="60" width="180" height="50" rx="8" ry="8" fill="#1e1b4b" stroke="#d8b4fe" stroke-width="2" />
-  <text x="130" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#e9d5ff">Nexus SDK</text>
+  <rect x="40" y="60" width="180" height="50" rx="8" ry="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2" />
+  <text x="130" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#bae6fd">Nexus SDK</text>
 
   <!-- FastAPI Backend -->
-  <rect x="40" y="130" width="180" height="50" rx="8" ry="8" fill="#1e1b4b" stroke="#d8b4fe" stroke-width="2" />
-  <text x="130" y="160" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#e9d5ff">FastAPI Backend</text>
+  <rect x="40" y="130" width="180" height="50" rx="8" ry="8" fill="#0f172a" stroke="#22d3ee" stroke-width="2" />
+  <text x="130" y="160" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#bae6fd">FastAPI Backend</text>
 
   <!-- Core -->
   <!-- DAG Engine -->
-  <rect x="320" y="90" width="200" height="60" rx="8" ry="8" fill="#1e1b4b" stroke="#c084fc" stroke-width="2" />
-  <text x="420" y="125" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#f3e8ff">DAG Engine</text>
+  <rect x="320" y="90" width="200" height="60" rx="8" ry="8" fill="#0f172a" stroke="#3b82f6" stroke-width="2" />
+  <text x="420" y="125" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#bfdbfe">DAG Engine</text>
 
   <!-- Guardrails -->
-  <rect x="320" y="170" width="200" height="60" rx="8" ry="8" fill="#1e1b4b" stroke="#c084fc" stroke-width="2" />
-  <text x="420" y="205" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#f3e8ff">Guardrails &amp; Scoring</text>
+  <rect x="320" y="170" width="200" height="60" rx="8" ry="8" fill="#0f172a" stroke="#3b82f6" stroke-width="2" />
+  <text x="420" y="205" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#bfdbfe">Guardrails &amp; Scoring</text>
 
   <!-- Runtime -->
   <!-- OpenVINO -->
-  <rect x="640" y="60" width="220" height="50" rx="8" ry="8" fill="#1e1b4b" stroke="#a855f7" stroke-width="2" />
-  <text x="750" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#f3e8ff">OpenVINO LLM</text>
+  <rect x="640" y="60" width="220" height="50" rx="8" ry="8" fill="#0f172a" stroke="#0ea5e9" stroke-width="2" />
+  <text x="750" y="90" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#bae6fd">OpenVINO LLM</text>
 
   <!-- Agent Tools -->
-  <rect x="640" y="130" width="220" height="50" rx="8" ry="8" fill="#1e1b4b" stroke="#a855f7" stroke-width="2" />
-  <text x="750" y="160" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#f3e8ff">Agent Tools</text>
+  <rect x="640" y="130" width="220" height="50" rx="8" ry="8" fill="#0f172a" stroke="#0ea5e9" stroke-width="2" />
+  <text x="750" y="160" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#bae6fd">Agent Tools</text>
 
   <!-- Kafka -->
-  <rect x="640" y="200" width="220" height="50" rx="8" ry="8" fill="#1e1b4b" stroke="#a855f7" stroke-width="2" />
-  <text x="750" y="230" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#f3e8ff">Kafka Messaging</text>
+  <rect x="640" y="200" width="220" height="50" rx="8" ry="8" fill="#0f172a" stroke="#0ea5e9" stroke-width="2" />
+  <text x="750" y="230" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#bae6fd">Kafka Messaging</text>
 
   <!-- Storage -->
   <!-- Vector Memory -->
-  <rect x="320" y="300" width="200" height="50" rx="8" ry="8" fill="#1e1b4b" stroke="#7c3aed" stroke-width="2" />
-  <text x="420" y="330" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#ddd6fe">Vector Memory</text>
+  <rect x="320" y="300" width="200" height="50" rx="8" ry="8" fill="#0f172a" stroke="#6366f1" stroke-width="2" />
+  <text x="420" y="330" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#c7d2fe">Vector Memory</text>
 
   <!-- Monitoring -->
   <!-- Live Stream -->
-  <rect x="640" y="300" width="220" height="50" rx="8" ry="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2" />
-  <text x="750" y="330" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#ddd6fe">Live Event Stream</text>
+  <rect x="640" y="300" width="220" height="50" rx="8" ry="8" fill="#0f172a" stroke="#06b6d4" stroke-width="2" />
+  <text x="750" y="330" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#a5f3fc">Live Event Stream</text>
 
   <!-- Prometheus -->
-  <rect x="640" y="370" width="220" height="50" rx="8" ry="8" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2" />
-  <text x="750" y="400" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#ddd6fe">Prometheus / Grafana</text>
+  <rect x="640" y="370" width="220" height="50" rx="8" ry="8" fill="#0f172a" stroke="#06b6d4" stroke-width="2" />
+  <text x="750" y="400" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#a5f3fc">Prometheus / Grafana</text>
 
   <!-- Flows -->
   <style>
@@ -57,7 +57,7 @@
     }
   </style>
 
-  <g fill="none" stroke="#a78bfa" stroke-width="2" stroke-dasharray="6 6" class="flow">
+  <g fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 6" class="flow">
     <path d="M220 85 H320" />
     <path d="M220 155 H320" />
     <path d="M420 150 V170" />

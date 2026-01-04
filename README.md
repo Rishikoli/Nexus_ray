@@ -1,6 +1,3 @@
-<p align="center">
-  <img src="assets/logo.svg" width="560" alt="Nexus Ray Logo">
-</p>
 
 <h1 align="center">Nexus Ray Framework</h1>
 
@@ -32,12 +29,12 @@ It combines **DAG-based workflow orchestration**, **optimized local LLM inferenc
 ## Technical Stack
 
 <p align="left">
-  <img src="https://img.shields.io/badge/Language-Python_3.10-7F00FF?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/AI_Engine-Intel_OpenVINO-A78BFA?style=for-the-badge&logo=intel&logoColor=white" />
-  <img src="https://img.shields.io/badge/Backend-FastAPI-9333EA?style=for-the-badge&logo=fastapi&logoColor=white" />
-  <img src="https://img.shields.io/badge/Messaging-Apache_Kafka-6B21A8?style=for-the-badge&logo=apachekafka&logoColor=white" />
-  <img src="https://img.shields.io/badge/Vector_DB-ChromaDB-C084FC?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Frontend-React_Input-E9D5FF?style=for-the-badge&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/Language-Python_3.10-3B82F6?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/AI_Engine-Intel_OpenVINO-06B6D4?style=for-the-badge&logo=intel&logoColor=white" />
+  <img src="https://img.shields.io/badge/Backend-FastAPI-0EA5E9?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/Messaging-Apache_Kafka-6366F1?style=for-the-badge&logo=apachekafka&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vector_DB-ChromaDB-38BDF8?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Frontend-React_Input-22D3EE?style=for-the-badge&logo=react&logoColor=black" />
 </p>
 
 ---
