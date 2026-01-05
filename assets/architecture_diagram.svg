@@ -1,43 +1,32 @@
 <svg viewBox="0 0 800 980" xmlns="http://www.w3.org/2000/svg">
   <style>
+    /* System font stack for reliability */
     .text-main { 
       fill: #F8FAFC; 
-      font-family: ui-monospace, 'Cascadia Code', monospace; 
+      font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace; 
       font-size: 11px; 
       text-anchor: middle; 
+      font-weight: 500;
     }
-
-    /* Node Styling */
     .node-rect { fill: #0C0A09; stroke: #404040; stroke-width: 1.5; rx: 6; }
     
-    /* Neon Glow Classes - Faster "High Load" Animation */
-    @keyframes highLoadGlow {
-      0%, 100% { filter: drop-shadow(0 0 4px #DC143C); opacity: 1; }
-      50% { filter: drop-shadow(0 0 10px #DC143C); opacity: 0.8; }
-    }
-    .glow-crimson { stroke: #DC143C; stroke-width: 2; animation: highLoadGlow 1.5s infinite; }
+    /* Neon Glows - Using standard SVG filters for better compatibility */
+    .glow-crimson { stroke: #DC143C; stroke-width: 2; filter: drop-shadow(0 0 4px #DC143C); }
+    .glow-purple { stroke: #D299FF; stroke-width: 2; filter: drop-shadow(0 0 5px #D299FF); }
     
-    @keyframes aiActivity {
-      0%, 100% { filter: drop-shadow(0 0 5px #D299FF); }
-      50% { filter: drop-shadow(0 0 12px #D299FF); }
-    }
-    .glow-purple { stroke: #D299FF; stroke-width: 2; animation: aiActivity 1.2s infinite; }
-    
-    /* Rapid Scanline Animation */
+    /* Moving Scanline Animation */
     .scan-line {
       fill: #FFFFFF;
-      opacity: 0.15;
-      animation: rapidScan 1.5s linear infinite;
+      opacity: 0.1;
+      animation: scan 3s linear infinite;
     }
-    @keyframes rapidScan {
+    @keyframes scan {
       0% { transform: translateY(-10px); opacity: 0; }
-      50% { opacity: 0.3; }
-      100% { transform: translateY(35px); opacity: 0; }
+      50% { opacity: 0.15; }
+      100% { transform: translateY(30px); opacity: 0; }
     }
-
-    /* Path & Packet Animation */
     .path { fill: none; stroke: #404040; stroke-width: 1.5; stroke-dasharray: 4; }
-    .packet { fill: #DC143C; filter: drop-shadow(0 0 3px #DC143C); animation: travel 3s linear infinite; }
+    .packet { fill: #DC143C; filter: drop-shadow(0 0 3px #DC143C); animation: travel 4s linear infinite; }
     
     @keyframes travel {
       0% { offset-distance: 0%; opacity: 0; }
@@ -46,48 +35,42 @@
       100% { offset-distance: 100%; opacity: 0; }
     }
 
-    /* Thinking Pulse */
+    /* Mistral Thinking Pulse - Fixed Scaling */
     .thinking-pulse {
       fill: #D299FF;
       transform-origin: center;
-      animation: pulse 1s ease-in-out infinite;
+      animation: pulse 2s ease-in-out infinite;
     }
     @keyframes pulse {
-      0%, 100% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.03); }
+      0%, 100% { opacity: 0.15; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(1.05); }
     }
   </style>
 
   <rect width="100%" height="100%" fill="#0C0A09" />
 
   <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#404040" stroke-width="0.5" opacity="0.15"/>
+    </pattern>
     <path id="p-main" d="M400 50 V360" />
-    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#404040" />
-    </marker>
+    <path id="toLLM" d="M400 400 L200 440" />
+    <path id="toAgent" d="M400 400 L600 440" />
   </defs>
   
-  <circle r="3" class="packet" style="offset-path: url(#p-main);"/>
+  <rect width="100%" height="100%" fill="url(#grid)" />
 
-  <g class="path" marker-end="url(#arrow)">
-    <path d="M400 50 V80" />
-    <path d="M400 120 V150" />
-    <path d="M400 190 V220" />
-    <path d="M400 260 V290" />
-    <path d="M400 330 V360" />
-    <path d="M400 400 L200 440" stroke-dasharray="0" />
-    <path d="M400 400 V440" stroke-dasharray="0" />
-    <path d="M400 400 L600 440" stroke-dasharray="0" />
-    <path d="M200 480 V520" />
-    <path d="M400 480 V520" />
-    <path d="M600 480 V520" />
-    <path d="M200 560 Q400 620 400 650" stroke="#404040" />
-    <path d="M400 560 V650" stroke="#404040" />
-    <path d="M600 560 Q400 620 400 650" stroke="#404040" />
+  <circle r="3" class="packet" style="offset-path: url(#p-main); animation-delay: 0s;"/>
+  <circle r="3" class="packet" style="offset-path: url(#toLLM); animation-delay: 2s;"/>
+  <circle r="3" class="packet" style="offset-path: url(#toAgent); animation-delay: 2.5s;"/>
+
+  <g class="path">
+    <path d="M400 50 V360" />
+    <path d="M400 400 L200 440 M400 400 V440 M400 400 L600 440" />
+    <path d="M200 480 V520 M400 480 V520 M600 480 V520" />
+    <path d="M200 560 Q400 620 400 650 M600 560 Q400 620 400 650" />
     <path d="M400 690 V730" />
-    <path d="M400 770 V820 H200 V850" />
-    <path d="M400 820 H600 V850" />
-    <path d="M600 890 V920" />
+    <path d="M400 770 V820 H200 V850 M400 820 H600 V850 M600 890 V920" />
     <path d="M125 890 V920" />
   </g>
 
@@ -98,6 +81,7 @@
 
   <g transform="translate(325, 80)">
     <rect class="node-rect glow-crimson" width="150" height="40" />
+    <rect class="scan-line" width="150" height="10" />
     <text class="text-main" x="75" y="25">API Server</text>
   </g>
 
@@ -108,8 +92,13 @@
   
   <g transform="translate(325, 220)">
     <rect class="node-rect glow-crimson" width="150" height="40" />
-    <rect class="scan-line" width="150" height="8" />
+    <rect class="scan-line" width="150" height="10" style="animation-delay: 1.5s;"/>
     <text class="text-main" x="75" y="25">WorkflowDAG</text>
+  </g>
+
+  <g transform="translate(325, 290)">
+    <rect class="node-rect" width="150" height="40" />
+    <text class="text-main" x="75" y="25">Task Scheduler</text>
   </g>
 
   <g transform="translate(125, 440)">
@@ -117,15 +106,24 @@
     <text class="text-main" x="75" y="25">LLM Executor</text>
   </g>
   
+  <g transform="translate(325, 440)">
+    <rect class="node-rect" width="150" height="40" />
+    <text class="text-main" x="75" y="25">Tool Executor</text>
+  </g>
+  
+  <g transform="translate(525, 440)">
+    <rect class="node-rect glow-purple" width="150" height="40" />
+    <text class="text-main" x="75" y="25">Agent Executor</text>
+  </g>
+
   <g transform="translate(100, 520)">
     <rect class="thinking-pulse" width="200" height="40" rx="6" />
     <rect class="node-rect glow-purple" width="200" height="40" />
-    <rect class="scan-line" width="200" height="8" style="animation-duration: 0.8s" />
     <text class="text-main" x="100" y="25" style="fill: #D299FF">OpenVINO: Mistral-7B</text>
   </g>
 
   <g transform="translate(325, 520)">
-    <rect class="node-rect" width="150" height="40" stroke="#DC143C" />
+    <rect class="node-rect" width="150" height="40" />
     <text class="text-main" x="75" y="25">External Tools</text>
   </g>
   
@@ -144,13 +142,23 @@
     <text class="text-main" x="75" y="25">State Manager</text>
   </g>
 
-  <g transform="translate(125, 920)">
-    <rect class="node-rect glow-crimson" width="150" height="40" />
-    <text class="text-main" x="75" y="25">Client Response</text>
+  <g transform="translate(125, 850)">
+    <rect class="node-rect" width="150" height="40" />
+    <text class="text-main" x="75" y="25">Memory Store</text>
   </g>
-
+  
   <g transform="translate(525, 850)">
     <rect class="node-rect glow-purple" width="150" height="40" />
     <text class="text-main" x="75" y="25">Kafka Events</text>
+  </g>
+  
+  <g transform="translate(525, 920)">
+    <rect class="node-rect" width="150" height="40" />
+    <text class="text-main" x="75" y="25">Observability</text>
+  </g>
+
+  <g transform="translate(125, 920)">
+    <rect class="node-rect glow-crimson" width="150" height="40" />
+    <text class="text-main" x="75" y="25">Client Response</text>
   </g>
 </svg>
