@@ -97,6 +97,31 @@ The DAG scheduler determines the following execution batches:
 *   **Batch 7 (Sequential)**: Task 12: Generate Recommendations
 *   **Batch 8 (HITL Node)**: Task 13: Engineer Approval & Format Report
 
+### Live Execution Screenshots
+
+> [!NOTE]
+> **Screenshots Coming Soon**: The following screenshots will demonstrate the Semiconductor Yield Optimization workflow in action.
+
+**1. Workflow Initialization**
+<!-- TODO: Add screenshot of dashboard showing workflow start with all 7 agents -->
+![Semiconductor Workflow Start](../assets/screenshots/semiconductor_start.png)
+*Caption: Dashboard showing the Semiconductor workflow initialization with all agents in the DAG*
+
+**2. Parallel Analysis in Progress**
+<!-- TODO: Add screenshot showing Batch 3 parallel execution (Defect Detection, Historical Comparison, Pattern Analysis, Spatial Clustering) -->
+![Parallel Analysis](../assets/screenshots/semiconductor_parallel.png)
+*Caption: Live view of 4 agents running in parallel during the analysis phase*
+
+**3. HITL Engineer Approval Gate**
+<!-- TODO: Add screenshot of HITL approval popup/modal requesting engineer approval -->
+![HITL Approval Gate](../assets/screenshots/semiconductor_hitl.png)
+*Caption: Human-in-the-Loop gate requesting engineer approval before recipe deployment*
+
+**4. Final Optimization Results**
+<!-- TODO: Add screenshot of completed workflow with optimization recommendations and metrics -->
+![Final Results](../assets/screenshots/semiconductor_results.png)
+*Caption: Completed workflow showing yield improvement recommendations and confidence scores*
+
 ---
 
 ## 2. Protein-Drug Discovery Flow
@@ -132,6 +157,36 @@ graph TD
 ### Agent Collaboration
 
 ![Protein-Drug Agent Collaboration](../assets/protein_agent_sequence.svg)
+
+### Live Execution Screenshots
+
+> [!NOTE]
+> **Screenshots Coming Soon**: The following screenshots will demonstrate the Protein-Drug Discovery workflow in action with OpenVINO LLM inference.
+
+**1. Workflow Dashboard**
+<!-- TODO: Add screenshot of workflow graph showing all 7 agents -->
+![Protein-Drug Workflow Graph](../assets/screenshots/protein_dashboard.png)
+*Caption: Live dashboard displaying the 7-agent protein-drug discovery workflow*
+
+**2. OpenVINO LLM Inference**
+<!-- TODO: Add screenshot showing OpenVINO Mistral-7B model processing drugability scoring -->
+![OpenVINO LLM Processing](../assets/screenshots/protein_llm.png)
+*Caption: OpenVINO-optimized Mistral-7B model performing drugability analysis*
+
+**3. Agent Consensus & Scoring**
+<!-- TODO: Add screenshot of consensus agent combining results from parallel agents -->
+![Multi-Agent Consensus](../assets/screenshots/protein_consensus.png)
+*Caption: Consensus agent aggregating results from parallel execution branches*
+
+**4. HITL Expert Review Gate**
+<!-- TODO: Add screenshot of HITL modal for expert approval when drugability score > 0.8 -->
+![HITL Expert Gate](../assets/screenshots/protein_hitl.png)
+*Caption: Human-in-the-Loop gate requesting expert review before clinical trial approval*
+
+**5. Final Drug Candidate Report**
+<!-- TODO: Add screenshot of final report with binding affinity, safety profile, and drugability score -->
+![Final Report](../assets/screenshots/protein_results.png)
+*Caption: Comprehensive drug candidate analysis with all metrics and safety assessments*
 
 ---
 
