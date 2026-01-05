@@ -111,19 +111,9 @@ npm run dev
 
 Nexus Ray includes first-class benchmarking for OpenVINO-optimized LLMs.
 
-### Pre-Optimization vs Post-Optimization
+### Performance Comparison
 
-Throughput (tok/s)
-FP16  | ███████░░░░░░░░ 1.2
-INT8  | ██████████████░ 2.28   🚀 ~2×
-
-Latency (seconds)
-FP16  | ████████████████ 42s
-INT8  | ████████░░░░░░░ 22s    ⚡ ~50%↓
-
-Memory (GB)
-FP16  | ████████████████ 16.5
-INT8  | ████████░░░░░░░ 8.9    💾 ~47%↓
+![OpenVINO Performance Benchmarks](./assets/performance_comparison.svg)
 
 > [!TIP]
 > OpenVINO INT8 quantization enables high-quality inference on 16GB RAM systems while delivering nearly 2× performance gains.
