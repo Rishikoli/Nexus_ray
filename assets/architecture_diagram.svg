@@ -1,147 +1,156 @@
-<svg width="920" height="600" viewBox="0 0 920 600" xmlns="http://www.w3.org/2000/svg">
-  <!-- Solid Background -->
-  <rect x="0" y="0" width="920" height="600" fill="#0c0a09" rx="12" />
+<svg viewBox="0 0 800 980" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text-main { 
+      fill: #F8FAFC; 
+      font-family: ui-monospace, 'Cascadia Code', monospace; 
+      font-size: 11px; 
+      text-anchor: middle; 
+    }
+
+    /* Node Styling */
+    .node-rect { fill: #0C0A09; stroke: #404040; stroke-width: 1.5; rx: 6; }
+    
+    /* Neon Glow Classes - Faster "High Load" Animation */
+    @keyframes highLoadGlow {
+      0%, 100% { filter: drop-shadow(0 0 4px #DC143C); opacity: 1; }
+      50% { filter: drop-shadow(0 0 10px #DC143C); opacity: 0.8; }
+    }
+    .glow-crimson { stroke: #DC143C; stroke-width: 2; animation: highLoadGlow 1.5s infinite; }
+    
+    @keyframes aiActivity {
+      0%, 100% { filter: drop-shadow(0 0 5px #D299FF); }
+      50% { filter: drop-shadow(0 0 12px #D299FF); }
+    }
+    .glow-purple { stroke: #D299FF; stroke-width: 2; animation: aiActivity 1.2s infinite; }
+    
+    /* Rapid Scanline Animation */
+    .scan-line {
+      fill: #FFFFFF;
+      opacity: 0.15;
+      animation: rapidScan 1.5s linear infinite;
+    }
+    @keyframes rapidScan {
+      0% { transform: translateY(-10px); opacity: 0; }
+      50% { opacity: 0.3; }
+      100% { transform: translateY(35px); opacity: 0; }
+    }
+
+    /* Path & Packet Animation */
+    .path { fill: none; stroke: #404040; stroke-width: 1.5; stroke-dasharray: 4; }
+    .packet { fill: #DC143C; filter: drop-shadow(0 0 3px #DC143C); animation: travel 3s linear infinite; }
+    
+    @keyframes travel {
+      0% { offset-distance: 0%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; }
+    }
+
+    /* Thinking Pulse */
+    .thinking-pulse {
+      fill: #D299FF;
+      transform-origin: center;
+      animation: pulse 1s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.03); }
+    }
+  </style>
+
+  <rect width="100%" height="100%" fill="#0C0A09" />
 
   <defs>
-    <style>
-      @keyframes flowStep1 { 0%, 100% { opacity: 0; } 10%, 25% { opacity: 1; } }
-      @keyframes flowStep2 { 0%, 25%, 100% { opacity: 0; } 30%, 45% { opacity: 1; } }
-      @keyframes flowStep3 { 0%, 45%, 100% { opacity: 0; } 50%, 65% { opacity: 1; } }
-      @keyframes flowStep4 { 0%, 65%, 100% { opacity: 0; } 70%, 85% { opacity: 1; } }
-      @keyframes flowStep5 { 0%, 85%, 95% { opacity: 0; } 90%, 100% { opacity: 1; } }
-      
-      @keyframes pulse { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
-      @keyframes glow { 0%, 100% { filter: drop-shadow(0 0 0px #DC143C); } 50% { filter: drop-shadow(0 0 8px #DC143C); } }
-      
-      .layer-label { fill: #94a3b8; font-family: Arial, sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-      .box-text { fill: #fff; font-family: 'Courier New', monospace; font-size: 13px; font-weight: 600; text-anchor: middle; }
-      .step-label { fill: #DC143C; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; }
-      .data-label { fill: #4ade80; font-family: Arial, sans-serif; font-size: 12px; font-style: italic; }
-      
-      .active-step1 { animation: pulse 3s ease-in-out infinite, glow 3s ease-in-out infinite; }
-      .active-step2 { animation: pulse 3s 0.6s ease-in-out infinite, glow 3s 0.6s ease-in-out infinite; }
-      .active-step3 { animation: pulse 3s 1.2s ease-in-out infinite, glow 3s 1.2s ease-in-out infinite; }
-      .active-step4 { animation: pulse 3s 1.8s ease-in-out infinite, glow 3s 1.8s ease-in-out infinite; }
-      .active-step5 { animation: pulse 3s 2.4s ease-in-out infinite, glow 3s 2.4s ease-in-out infinite; }
-    </style>
-    
-    <!-- Arrow marker -->
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#DC143C" />
+    <path id="p-main" d="M400 50 V360" />
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#404040" />
     </marker>
-    
-    <!-- Data packet -->
-    <circle id="dataPacket" r="6" fill="#4ade80" opacity="0.8">
-      <animate attributeName="r" values="6;8;6" dur="1s" repeatCount="indefinite"/>
-    </circle>
   </defs>
-
-  <!-- Title -->
-  <text x="460" y="30" text-anchor="middle" fill="#fff" font-family="'Courier New', monospace" font-size="20px" font-weight="bold">
-    Nexus Ray Architecture • Live Data Flow
-  </text>
-
-  <!-- Layer Labels -->
-  <text class="layer-label" x="50" y="75">INTERFACE</text>
-  <text class="layer-label" x="320" y="75">CORE ENGINE</text>
-  <text class="layer-label" x="640" y="75">RUNTIME & MESSAGING</text>
-  <text class="layer-label" x="320" y="285">STORAGE</text>
-  <text class="layer-label" x="640" y="285">OBSERVABILITY</text>
-
-  <!-- STEP 1: Interface Layer -->
-  <g class="active-step1">
-    <rect x="40" y="95" width="180" height="50" rx="8" fill="#1c1917" opacity="0.8"/>
-    <text class="box-text" x="130" y="125">Nexus SDK</text>
-    <rect x="40" y="165" width="180" height="50" rx="8" fill="#1c1917" opacity="0.8"/>
-    <text class="box-text" x="130" y="195">FastAPI Backend</text>
-  </g>
-
-  <!-- STEP 2: Core Engine -->
-  <g class="active-step2">
-    <rect x="280" y="95" width="200" height="60" rx="8" fill="#1c1917" opacity="0.8"/>
-    <text class="box-text" x="380" y="130">DAG Engine</text>
-    <rect x="280" y="175" width="200" height="60" rx="8" fill="#1c1917" opacity="0.8"/>
-    <text class="box-text" x="380" y="210">Guardrails & Scoring</text>
-  </g>
-
-  <!-- STEP 3: Runtime Layer -->
-  <g class="active-step3">
-    <rect x="540" y="65" width="220" height="50" rx="8" fill="#1c1917" opacity="0.8"/>
-    <text class="box-text" x="650" y="95">OpenVINO LLM</text>
-    <rect x="540" y="135" width="220" height="50" rx="8" fill="#1c1917" opacity="0.8"/>
-    <text class="box-text" x="650" y="165">Agent Tools</text>
-    <rect x="540" y="205" width="220" height="50" rx="8" fill="#1c1917" opacity="0.8"/>
-    <text class="box-text" x="650" y="235">Kafka Messaging</text>
-  </g>
-
-  <!-- STEP 4: Storage Layer -->
-  <g class="active-step4">
-    <rect x="280" y="305" width="200" height="50" rx="8" fill="#1c1917" opacity="0.8"/>
-    <text class="box-text" x="380" y="335">Vector Memory</text>
-  </g>
-
-  <!-- STEP 5: Monitoring Layer -->
-  <g class="active-step5">
-    <rect x="540" y="305" width="220" height="50" rx="8" fill="#1c1917" opacity="0.8"/>
-    <text class="box-text" x="650" y="335">Live Event Stream</text>
-    <rect x="540" y="375" width="220" height="50" rx="8" fill="#1c1917" opacity="0.8"/>
-    <text class="box-text" x="650" y="405">Prometheus / Grafana</text>
-  </g>
-
-  <!-- Animated Flow Paths with Data Packets -->
   
-  <!-- Step 1: User Request → SDK -->
-  <g opacity="0" style="animation: flowStep1 6s ease-in-out infinite;">
-    <path d="M 20,120 L 40,120" stroke="#DC143C" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
-    <use href="#dataPacket" x="30" y="120"/>
-    <text class="step-label" x="20" y="110">Step 1</text>
-    <text class="data-label" x="20" y="140">User Request</text>
+  <circle r="3" class="packet" style="offset-path: url(#p-main);"/>
+
+  <g class="path" marker-end="url(#arrow)">
+    <path d="M400 50 V80" />
+    <path d="M400 120 V150" />
+    <path d="M400 190 V220" />
+    <path d="M400 260 V290" />
+    <path d="M400 330 V360" />
+    <path d="M400 400 L200 440" stroke-dasharray="0" />
+    <path d="M400 400 V440" stroke-dasharray="0" />
+    <path d="M400 400 L600 440" stroke-dasharray="0" />
+    <path d="M200 480 V520" />
+    <path d="M400 480 V520" />
+    <path d="M600 480 V520" />
+    <path d="M200 560 Q400 620 400 650" stroke="#404040" />
+    <path d="M400 560 V650" stroke="#404040" />
+    <path d="M600 560 Q400 620 400 650" stroke="#404040" />
+    <path d="M400 690 V730" />
+    <path d="M400 770 V820 H200 V850" />
+    <path d="M400 820 H600 V850" />
+    <path d="M600 890 V920" />
+    <path d="M125 890 V920" />
   </g>
 
-  <!-- Step 2: SDK → DAG Engine -->
-  <g opacity="0" style="animation: flowStep2 6s ease-in-out infinite;">
-    <path d="M 220,120 L 280,120" stroke="#DC143C" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
-    <use href="#dataPacket" x="250" y="120"/>
-    <text class="step-label" x="230" y="110">Step 2</text>
-    <text class="data-label" x="215" y="140">Workflow Definition</text>
+  <g transform="translate(325, 10)">
+    <rect class="node-rect" width="150" height="40" />
+    <text class="text-main" x="75" y="25">Client Request</text>
   </g>
 
-  <!-- Step 3: DAG → OpenVINO & Kafka -->
-  <g opacity="0" style="animation: flowStep3 6s ease-in-out infinite;">
-    <path d="M 480,125 L 540,90" stroke="#DC143C" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
-    <use href="#dataPacket" x="510" y="107"/>
-    <path d="M 480,205 L 540,230" stroke="#DC143C" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
-    <use href="#dataPacket" x="510" y="217"/>
-    <text class="step-label" x="490" y="115">Step 3</text>
-    <text class="data-label" x="485" y="135">LLM Inference</text>
-    <text class="data-label" x="485" y="250">Event Stream</text>
+  <g transform="translate(325, 80)">
+    <rect class="node-rect glow-crimson" width="150" height="40" />
+    <text class="text-main" x="75" y="25">API Server</text>
   </g>
 
-  <!-- Step 4: Results → Vector Memory -->
-  <g opacity="0" style="animation: flowStep4 6s ease-in-out infinite;">
-    <path d="M 380,235 L 380,305" stroke="#DC143C" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
-    <use href="#dataPacket" x="380" y="270"/>
-    <text class="step-label" x="390" y="260">Step 4</text>
-    <text class="data-label" x="390" y="280">Context Storage</text>
+  <g transform="translate(325, 150)">
+    <rect class="node-rect glow-crimson" width="150" height="40" />
+    <text class="text-main" x="75" y="25">Orchestrator</text>
+  </g>
+  
+  <g transform="translate(325, 220)">
+    <rect class="node-rect glow-crimson" width="150" height="40" />
+    <rect class="scan-line" width="150" height="8" />
+    <text class="text-main" x="75" y="25">WorkflowDAG</text>
   </g>
 
-  <!-- Step 5: Events → Monitoring -->
-  <g opacity="0" style="animation: flowStep5 6s ease-in-out infinite;">
-    <path d="M 650,255 L 650,305" stroke="#DC143C" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
-    <use href="#dataPacket" x="650" y="280"/>
-    <text class="step-label" x="660" y="270">Step 5</text>
-    <text class="data-label" x="660" y="290">Metrics & Logs</text>
+  <g transform="translate(125, 440)">
+    <rect class="node-rect glow-purple" width="150" height="40" />
+    <text class="text-main" x="75" y="25">LLM Executor</text>
+  </g>
+  
+  <g transform="translate(100, 520)">
+    <rect class="thinking-pulse" width="200" height="40" rx="6" />
+    <rect class="node-rect glow-purple" width="200" height="40" />
+    <rect class="scan-line" width="200" height="8" style="animation-duration: 0.8s" />
+    <text class="text-main" x="100" y="25" style="fill: #D299FF">OpenVINO: Mistral-7B</text>
   </g>
 
-  <!-- Legend -->
-  <g opacity="0.8">
-    <rect x="20" y="520" width="880" height="70" rx="8" fill="#1c1917" stroke="#36454F" stroke-width="2"/>
-    <text x="40" y="545" fill="#DC143C" font-family="Arial" font-size="14px" font-weight="bold">Animation Flow:</text>
-    <text x="40" y="565" fill="#94a3b8" font-family="Arial" font-size="12px">
-      1. User submits workflow → 2. DAG compiles tasks → 3. OpenVINO processes with LLM, Kafka streams events
-    </text>
-    <text x="40" y="580" fill="#94a3b8" font-family="Arial" font-size="12px">
-      4. Results stored in Vector Memory → 5. Metrics sent to monitoring dashboard • Loop repeats every 6s
-    </text>
+  <g transform="translate(325, 520)">
+    <rect class="node-rect" width="150" height="40" stroke="#DC143C" />
+    <text class="text-main" x="75" y="25">External Tools</text>
+  </g>
+  
+  <g transform="translate(525, 520)">
+    <rect class="node-rect glow-purple" width="150" height="40" />
+    <text class="text-main" x="75" y="25">Custom Agents</text>
+  </g>
+
+  <g transform="translate(325, 650)">
+    <rect class="node-rect glow-crimson" width="150" height="40" />
+    <text class="text-main" x="75" y="25">Response</text>
+  </g>
+  
+  <g transform="translate(325, 730)">
+    <rect class="node-rect" width="150" height="40" />
+    <text class="text-main" x="75" y="25">State Manager</text>
+  </g>
+
+  <g transform="translate(125, 920)">
+    <rect class="node-rect glow-crimson" width="150" height="40" />
+    <text class="text-main" x="75" y="25">Client Response</text>
+  </g>
+
+  <g transform="translate(525, 850)">
+    <rect class="node-rect glow-purple" width="150" height="40" />
+    <text class="text-main" x="75" y="25">Kafka Events</text>
   </g>
 </svg>

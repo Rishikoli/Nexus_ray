@@ -26,7 +26,7 @@ graph TD
     F --> G[LLM Executor]
     F --> H[Tool Executor]
     F --> I[Agent Executor]
-    G --> J[OpenVINO LLM]
+    G --> J[OpenVINO LLM: Mistral-7B]
     H --> K[External Tools]
     I --> L[Custom Agents]
     J --> M[Response]
