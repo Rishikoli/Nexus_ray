@@ -1,92 +1,119 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" style="background: #0c0a09;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" style="background: linear-gradient(135deg, #0c0a09 0%, #1c1917 100%);">
   <defs>
     <style>
-      @keyframes growBar {
-        from { width: 0; }
-        to { width: var(--bar-width); }
+      @keyframes slideIn {
+        from { transform: translateX(-100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
       }
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+      @keyframes countUp {
+        from { opacity: 0; transform: scale(0.5); }
+        to { opacity: 1; transform: scale(1); }
       }
-      @keyframes pulse {
-        0%, 100% { opacity: 0.8; }
-        50% { opacity: 1; }
+      @keyframes glow {
+        0%, 100% { filter: drop-shadow(0 0 3px currentColor); }
+        50% { filter: drop-shadow(0 0 8px currentColor); }
       }
-      .title { fill: #fff; font-family: 'Courier New', monospace; font-size: 24px; font-weight: bold; }
-      .subtitle { fill: #94a3b8; font-family: Arial, sans-serif; font-size: 14px; }
-      .label { fill: #e2e8f0; font-family: Arial, sans-serif; font-size: 16px; font-weight: 600; }
-      .value { fill: #fff; font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold; }
-      .metric-title { fill: #fecdd3; font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; }
-      .bar-fp16 { fill: #36454F; }
-      .bar-int8 { fill: #DC143C; }
-      .improvement { fill: #4ade80; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; animation: pulse 2s ease-in-out infinite; }
       
-      .bar-animated { animation: growBar 1.5s ease-out forwards; opacity: 0; }
-      .labels-animated { animation: fadeIn 0.5s ease-out forwards; opacity: 0; }
+      .title { fill: #fff; font-family: 'SF Pro Display', -apple-system, sans-serif; font-size: 32px; font-weight: 700; }
+      .subtitle { fill: #94a3b8; font-family: 'SF Pro Text', -apple-system, sans-serif; font-size: 16px; font-weight: 500; }
+      .metric-label { fill: #e2e8f0; font-family: 'SF Pro Text', -apple-system, sans-serif; font-size: 18px; font-weight: 600; }
+      .bar-label { fill: #cbd5e1; font-family: 'SF Mono', 'Courier New', monospace; font-size: 14px; font-weight: 600; }
+      .value-large { fill: #fff; font-family: 'SF Mono', 'Courier New', monospace; font-size: 24px; font-weight: 700; }
+      .improvement-badge { fill: #22c55e; font-family: 'SF Pro Text', -apple-system, sans-serif; font-size: 14px; font-weight: 700; }
+      
+      .bar-fp16 { fill: url(#gradient-fp16); }
+      .bar-int8 { fill: url(#gradient-int8); }
+      
+      .slide-1 { animation: slideIn 0.8s ease-out 0.5s both; }
+      .slide-2 { animation: slideIn 0.8s ease-out 1.2s both; }
+      .slide-3 { animation: slideIn 0.8s ease-out 1.9s both; }
+      .count-1 { animation: countUp 0.6s ease-out 1.5s both; }
+      .count-2 { animation: countUp 0.6s ease-out 2.2s both; }
+      .count-3 { animation: countUp 0.6s ease-out 2.9s both; }
+      .glow-effect { animation: glow 2s ease-in-out infinite; }
     </style>
+    
+    <!-- Gradients -->
+    <linearGradient id="gradient-fp16" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#475569;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#64748b;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="gradient-int8" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#DC143C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
   </defs>
 
-  <!-- Title -->
-  <text class="title" x="450" y="40" text-anchor="middle">OpenVINO™ Performance Comparison</text>
-  <text class="subtitle" x="450" y="65" text-anchor="middle">Mistral-7B: INT8 Quantization vs FP16 Baseline</text>
+  <!-- Header -->
+  <text class="title" x="500" y="60" text-anchor="middle">Intel® OpenVINO™ Performance</text>
+  <text class="subtitle" x="500" y="90" text-anchor="middle">Mistral-7B: INT8 vs FP16 Quantization Comparison</text>
 
-  <!-- Throughput Section -->
-  <text class="metric-title" x="50" y="120">Throughput (tokens/sec)</text>
-  
-  <!-- FP16 Bar -->
-  <rect x="280" y="95" width="0" height="35" rx="4" class="bar-fp16 bar-animated" style="--bar-width: 171px; animation-delay: 0.5s;">
-    <animate attributeName="width" from="0" to="171" dur="1.5s" begin="0.5s" fill="freeze"/>
-  </rect>
-  <text class="label labels-animated" x="50" y="118" style="animation-delay: 0.8s;">FP16</text>
-  <text class="value labels-animated" x="460" y="118" style="animation-delay: 1.8s;">1.2 tok/s</text>
-  
-  <!-- INT8 Bar -->
-  <rect x="280" y="140" width="0" height="35" rx="4" class="bar-int8 bar-animated" style="--bar-width: 325px; animation-delay: 1s;">
-    <animate attributeName="width" from="0" to="325" dur="1.5s" begin="1s" fill="freeze"/>
-  </rect>
-  <text class="label labels-animated" x="50" y="163" style="animation-delay: 1.3s;">INT8</text>
-  <text class="value labels-animated" x="615" y="163" style="animation-delay: 2.3s;">2.28 tok/s</text>
-  <text class="improvement labels-animated" x="720" y="163" style="animation-delay: 2.5s;">🚀 ~2× faster</text>
+  <!-- Metric 1: Throughput -->
+  <g transform="translate(100, 140)">
+    <text class="metric-label" x="0" y="0">⚡ Inference Throughput</text>
+    
+    <!-- FP16 Bar -->
+    <g class="slide-1">
+      <rect x="0" y="20" width="300" height="50" rx="8" class="bar-fp16" opacity="0.9"/>
+      <text class="bar-label" x="15" y="50">FP16</text>
+      <text class="value-large count-1" x="310" y="52">1.2 tok/s</text>
+    </g>
+    
+    <!-- INT8 Bar -->
+    <g class="slide-1">
+      <rect x="0" y="80" width="570" height="50" rx="8" class="bar-int8" opacity="0.95"/>
+      <text class="bar-label" x="15" y="110">INT8</text>
+      <text class="value-large count-1" x="580" y="112">2.28 tok/s</text>
+      <rect x="680" y="85" width="120" height="40" rx="20" fill="#166534" opacity="0.9" class="glow-effect"/>
+      <text class="improvement-badge" x="740" y="112" text-anchor="middle">+90% ⬆</text>
+    </g>
+  </g>
 
-  <!-- Latency Section -->
-  <text class="metric-title" x="50" y="240">Latency (seconds)</text>
-  
-  <!-- FP16 Bar -->
-  <rect x="280" y="215" width="0" height="35" rx="4" class="bar-fp16 bar-animated" style="--bar-width: 420px; animation-delay: 1.5s;">
-    <animate attributeName="width" from="0" to="420" dur="1.5s" begin="1.5s" fill="freeze"/>
-  </rect>
-  <text class="label labels-animated" x="50" y="238" style="animation-delay: 1.8s;">FP16</text>
-  <text class="value labels-animated" x="710" y="238" style="animation-delay: 2.8s;">42s</text>
-  
-  <!-- INT8 Bar -->
-  <rect x="280" y="260" width="0" height="35" rx="4" class="bar-int8 bar-animated" style="--bar-width: 220px; animation-delay: 2s;">
-    <animate attributeName="width" from="0" to="220" dur="1.5s" begin="2s" fill="freeze"/>
-  </rect>
-  <text class="label labels-animated" x="50" y="283" style="animation-delay: 2.3s;">INT8</text>
-  <text class="value labels-animated" x="510" y="283" style="animation-delay: 3.3s;">22s</text>
-  <text class="improvement labels-animated" x="720" y="283" style="animation-delay: 3.5s;">⚡ 48% faster</text>
+  <!-- Metric 2: Latency -->
+  <g transform="translate(100, 330)">
+    <text class="metric-label" x="0" y="0">🚀 Response Latency</text>
+    
+    <!-- FP16 Bar -->
+    <g class="slide-2">
+      <rect x="0" y="20" width="700" height="50" rx="8" class="bar-fp16" opacity="0.9"/>
+      <text class="bar-label" x="15" y="50">FP16</text>
+      <text class="value-large count-2" x="710" y="52">42 seconds</text>
+    </g>
+    
+    <!-- INT8 Bar -->
+    <g class="slide-2">
+      <rect x="0" y="80" width="366" height="50" rx="8" class="bar-int8" opacity="0.95"/>
+      <text class="bar-label" x="15" y="110">INT8</text>
+      <text class="value-large count-2" x="376" y="112">22 seconds</text>
+      <rect x="680" y="85" width="120" height="40" rx="20" fill="#166534" opacity="0.9" class="glow-effect"/>
+      <text class="improvement-badge" x="740" y="112" text-anchor="middle">-48% ⬇</text>
+    </g>
+  </g>
 
-  <!-- Memory Section -->
-  <text class="metric-title" x="50" y="360">Memory Usage (GB)</text>
+  <!-- Metric 3: Memory -->
+  <g transform="translate(100, 520)">
+    <text class="metric-label" x="0" y="-10">💾 Memory Footprint</text>
+    
+    <g class="slide-3">
+      <!-- FP16 -->
+      <circle cx="100" cy="30" r="45" fill="url(#gradient-fp16)" opacity="0.9"/>
+      <text class="bar-label" x="100" y="25" text-anchor="middle">FP16</text>
+      <text class="value-large count-3" x="100" y="45" text-anchor="middle" font-size="18px">16.5 GB</text>
+      
+      <!-- INT8 -->
+      <circle cx="300" cy="30" r="35" fill="url(#gradient-int8)" opacity="0.95"/>
+      <text class="bar-label" x="300" y="25" text-anchor="middle">INT8</text>
+      <text class="value-large count-3" x="300" y="45" text-anchor="middle" font-size="18px">8.9 GB</text>
+      
+      <!-- Improvement Badge -->
+      <rect x="380" y="10" width="120" height="40" rx="20" fill="#166534" opacity="0.9" class="glow-effect"/>
+      <text class="improvement-badge" x="440" y="37" text-anchor="middle">-46% ⬇</text>
+    </g>
+  </g>
   
-  <!-- FP16 Bar -->
-  <rect x="280" y="335" width="0" height="35" rx="4" class="bar-fp16 bar-animated" style="--bar-width: 412px; animation-delay: 2.5s;">
-    <animate attributeName="width" from="0" to="412" dur="1.5s" begin="2.5s" fill="freeze"/>
-  </rect>
-  <text class="label labels-animated" x="50" y="358" style="animation-delay: 2.8s;">FP16</text>
-  <text class="value labels-animated" x="702" y="358" style="animation-delay: 3.8s;">16.5 GB</text>
-  
-  <!-- INT8 Bar -->
-  <rect x="280" y="380" width="0" height="35" rx="4" class="bar-int8 bar-animated" style="--bar-width: 222px; animation-delay: 3s;">
-    <animate attributeName="width" from="0" to="222" dur="1.5s" begin="3s" fill="freeze"/>
-  </rect>
-  <text class="label labels-animated" x="50" y="403" style="animation-delay: 3.3s;">INT8</text>
-  <text class="value labels-animated" x="512" y="403" style="animation-delay: 4.3s;">8.9 GB</text>
-  <text class="improvement labels-animated" x="720" y="403" style="animation-delay: 4.5s;">💾 46% less</text>
-
-  <!-- Footer Note -->
-  <text class="subtitle" x="450" y="460" text-anchor="middle" opacity="0" style="animation: fadeIn 0.5s ease-out 5s forwards;">
-    Benchmarked on Intel® Core™ i7-12700K | 32GB RAM | Ubuntu 22.04
+  <!-- Footer -->
+  <text x="500" y="590" text-anchor="middle" fill="#64748b" font-family="'SF Pro Text', sans-serif" font-size="12px">
+    Benchmarked on Intel® Core™ i7-12700K • 32GB RAM • Ubuntu 22.04
   </text>
 </svg>
