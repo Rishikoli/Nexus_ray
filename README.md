@@ -166,7 +166,9 @@ Released under the MIT License. Built for research, industry, and production AI 
 
 ---
 
-## The Team
+<h2 align="center">The Team</h2>
+
+<div align="center">
 
 Meet the minds behind Nexus Ray:
 
@@ -175,5 +177,7 @@ Meet the minds behind Nexus Ray:
 | <img src="https://github.com/rishikoli.png" width="40" height="40" style="border-radius:50%"> |  **Rishikesh Koli** | Project Lead & Architect | [@rishikoli](https://github.com/rishikoli) |
 | <img src="https://github.com/Yashraj045.png" width="40" height="40" style="border-radius:50%"> | **Yashraj Kulkarni** | Core Framework Developer | [@Yashraj045](https://github.com/Yashraj045) |
 | <img src="https://github.com/svpcet0303.png" width="40" height="40" style="border-radius:50%"> | **Anagha Bhure** | QA & Optimization | [@svpcet0303](https://github.com/svpcet0303) |
+
+</div>
 
 ---
