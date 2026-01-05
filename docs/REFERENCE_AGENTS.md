@@ -130,33 +130,8 @@ graph TD
 ```
 
 ### Agent Collaboration
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#DC143C','primaryTextColor':'#fff','primaryBorderColor':'#8B0000','lineColor':'#36454F','secondaryColor':'#36454F','tertiaryColor':'#2F4F4F','background':'#1a1a1a','mainBkg':'#DC143C','secondBkg':'#36454F','actorBorder':'#DC143C','actorBkg':'#36454F','actorTextColor':'#fff','actorLineColor':'#808080','signalColor':'#DC143C','signalTextColor':'#fff','labelBoxBkgColor':'#36454F','labelBoxBorderColor':'#DC143C','labelTextColor':'#fff','loopTextColor':'#fff','noteBorderColor':'#DC143C','noteBkgColor':'#2F4F4F','noteTextColor':'#fff','activationBorderColor':'#DC143C','activationBkgColor':'#36454F','sequenceNumberColor':'#1a1a1a'}}}%%
-sequenceDiagram
-    participant Orchestrator
-    participant BindingAgent
-    participant AffinityAgent
-    participant ToxicityAgent
-    participant ConsensusAgent
-    participant HITL as Human Expert
-    
-    Orchestrator->>BindingAgent: Analyze binding sites
-    Orchestrator->>AffinityAgent: Calculate affinity
-    Orchestrator->>ToxicityAgent: Assess toxicity
-    
-    par Parallel Execution
-        BindingAgent-->>Orchestrator: Binding results
-        AffinityAgent-->>Orchestrator: Affinity score
-        ToxicityAgent-->>Orchestrator: Safety profile
-    end
-    
-    Orchestrator->>ConsensusAgent: Combine results
-    ConsensusAgent->>ConsensusAgent: Vote + Weight
-    ConsensusAgent-->>Orchestrator: Final recommendation
-    
-    Orchestrator->>HITL: Request Approval (Gate)
-    HITL-->>Orchestrator: Approved
-```
+
+![Protein-Drug Agent Collaboration](../assets/protein_agent_sequence.svg)
 
 ---
 

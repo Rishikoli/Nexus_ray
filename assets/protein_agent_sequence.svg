@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" style="background: #1a1a1a;">
+  <defs>
+    <style>
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes drawLine {
+        from { stroke-dashoffset: 100; }
+        to { stroke-dashoffset: 0; }
+      }
+      .actor-box { fill: #DC143C; stroke: #8B0000; stroke-width: 2; }
+      .actor-box-2 { fill: #B22222; stroke: #8B0000; stroke-width: 2; }
+      .actor-box-3 { fill: #8B0000; stroke: #5C0000; stroke-width: 2; }
+      .actor-box-4 { fill: #A52A2A; stroke: #5C0000; stroke-width: 2; }
+      .actor-text { fill: #fff; font-family: 'Courier New', monospace; font-size: 13px; font-weight: bold; text-anchor: middle; }
+      .message-line { stroke: #36454F; stroke-width: 2; fill: none; stroke-dasharray: 100; stroke-dashoffset: 100; }
+      .message-arrow { fill: #808080; }
+      .message-text { fill: #fff; font-family: Arial, sans-serif; font-size: 11px; }
+      .par-box { fill: none; stroke: #36454F; stroke-width: 2; stroke-dasharray: 5,5; }
+      .par-label { fill: #DC143C; font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; }
+      
+      /* Sequential animations */
+      .msg1, .msg2, .msg3 { animation: drawLine 0.6s ease-out 0.5s forwards; }
+      .arrow1, .arrow2, .arrow3 { animation: fadeIn 0.2s ease-out 1.1s forwards; opacity: 0; }
+      .text1, .text2, .text3 { animation: fadeIn 0.2s ease-out 1.1s forwards; opacity: 0; }
+      
+      .par { animation: fadeIn 0.4s ease-out 1.3s forwards; opacity: 0; }
+      
+      .msg4, .msg5, .msg6 { animation: drawLine 0.6s ease-out 1.7s forwards; }
+      .arrow4, .arrow5, .arrow6 { animation: fadeIn 0.2s ease-out 2.3s forwards; opacity: 0; }
+      .text4, .text5, .text6 { animation: fadeIn 0.2s ease-out 2.3s forwards; opacity: 0; }
+      
+      .msg7 { animation: drawLine 0.6s ease-out 2.5s forwards; }
+      .arrow7 { animation: fadeIn 0.2s ease-out 3.1s forwards; opacity: 0; }
+      .text7 { animation: fadeIn 0.2s ease-out 3.1s forwards; opacity: 0; }
+      
+      .msg8, .msg9 { animation: drawLine 0.6s ease-out 3.3s forwards; }
+      .arrow8, .arrow9 { animation: fadeIn 0.2s ease-out 3.9s forwards; opacity: 0; }
+      .text8, .text9 { animation: fadeIn 0.2s ease-out 3.9s forwards; opacity: 0; }
+      
+      .msg10 { animation: drawLine 0.6s ease-out 4.1s forwards; }
+      .arrow10 { animation: fadeIn 0.2s ease-out 4.7s forwards; opacity: 0; }
+      .text10 { animation: fadeIn 0.2s ease-out 4.7s forwards; opacity: 0; }
+    </style>
+  </defs>
+
+  <!-- Actors -->
+  <g id="orchestrator">
+    <rect class="actor-box" x="30" y="20" width="130" height="40" rx="5"/>
+    <text class="actor-text" x="95" y="45">Orchestrator</text>
+    <line x1="95" y1="60" x2="95" y2="600" stroke="#36454F" stroke-width="2" stroke-dasharray="5,5"/>
+  </g>
+
+  <g id="binding">
+    <rect class="actor-box-2" x="200" y="20" width="130" height="40" rx="5"/>
+    <text class="actor-text" x="265" y="45">BindingAgent</text>
+    <line x1="265" y1="60" x2="265" y2="600" stroke="#36454F" stroke-width="2" stroke-dasharray="5,5"/>
+  </g>
+
+  <g id="affinity">
+    <rect class="actor-box-3" x="370" y="20" width="130" height="40" rx="5"/>
+    <text class="actor-text" x="435" y="45">AffinityAgent</text>
+    <line x1="435" y1="60" x2="435" y2="600" stroke="#36454F" stroke-width="2" stroke-dasharray="5,5"/>
+  </g>
+
+  <g id="toxicity">
+    <rect class="actor-box-4" x="540" y="20" width="130" height="40" rx="5"/>
+    <text class="actor-text" x="605" y="45">ToxicityAgent</text>
+    <line x1="605" y1="60" x2="605" y2="600" stroke="#36454F" stroke-width="2" stroke-dasharray="5,5"/>
+  </g>
+
+  <g id="consensus">
+    <rect class="actor-box" x="710" y="20" width="150" height="40" rx="5"/>
+    <text class="actor-text" x="785" y="45">ConsensusAgent</text>
+    <line x1="785" y1="60" x2="785" y2="600" stroke="#36454F" stroke-width="2" stroke-dasharray="5,5"/>
+  </g>
+
+  <!-- Message 1: Orchestrator -> BindingAgent -->
+  <line class="message-line msg1" x1="95" y1="100" x2="265" y2="100"/>
+  <polygon class="message-arrow arrow1" points="265,100 255,95 255,105"/>
+  <text class="message-text text1" x="150" y="95">Analyze binding sites</text>
+
+  <!-- Message 2: Orchestrator -> AffinityAgent -->
+  <line class="message-line msg2" x1="95" y1="130" x2="435" y2="130"/>
+  <polygon class="message-arrow arrow2" points="435,130 425,125 425,135"/>
+  <text class="message-text text2" x="240" y="125">Calculate affinity</text>
+
+  <!-- Message 3: Orchestrator -> ToxicityAgent -->
+  <line class="message-line msg3" x1="95" y1="160" x2="605" y2="160"/>
+  <polygon class="message-arrow arrow3" points="605,160 595,155 595,165"/>
+  <text class="message-text text3" x="320" y="155">Assess toxicity</text>
+
+  <!-- Parallel Execution Box -->
+  <rect class="par-box par" x="180" y="190" width="500" height="160" rx="5"/>
+  <text class="par-label par" x="190" y="205">par [Parallel Execution]</text>
+
+  <!-- Message 4: BindingAgent -> Orchestrator (return) -->
+  <line class="message-line msg4" x1="265" y1="230" x2="95" y2="230" stroke-dasharray="5,3"/>
+  <polygon class="message-arrow arrow4" points="95,230 105,225 105,235"/>
+  <text class="message-text text4" x="150" y="225">Binding results</text>
+
+  <!-- Message 5: AffinityAgent -> Orchestrator (return) -->
+  <line class="message-line msg5" x1="435" y1="270" x2="95" y2="270" stroke-dasharray="5,3"/>
+  <polygon class="message-arrow arrow5" points="95,270 105,265 105,275"/>
+  <text class="message-text text5" x="240" y="265">Affinity score</text>
+
+  <!-- Message 6: ToxicityAgent -> Orchestrator (return) -->
+  <line class="message-line msg6" x1="605" y1="310" x2="95" y2="310" stroke-dasharray="5,3"/>
+  <polygon class="message-arrow arrow6" points="95,310 105,305 105,315"/>
+  <text class="message-text text6" x="320" y="305">Safety profile</text>
+
+  <!-- Message 7: Orchestrator -> ConsensusAgent -->
+  <line class="message-line msg7" x1="95" y1="380" x2="785" y2="380"/>
+  <polygon class="message-arrow arrow7" points="785,380 775,375 775,385"/>
+  <text class="message-text text7" x="410" y="375">Combine results</text>
+
+  <!-- Message 8: ConsensusAgent -> ConsensusAgent (self) -->
+  <path class="message-line msg8" d="M 785 410 L 820 410 L 820 440 L 785 440" fill="none"/>
+  <polygon class="message-arrow arrow8" points="785,440 795,435 795,445"/>
+  <text class="message-text text8" x="830" y="425">Vote + Weight</text>
+
+  <!-- Message 9: ConsensusAgent -> Orchestrator (return) -->
+  <line class="message-line msg9" x1="785" y1="480" x2="95" y2="480" stroke-dasharray="5,3"/>
+  <polygon class="message-arrow arrow9" points="95,480 105,475 105,485"/>
+  <text class="message-text text9" x="410" y="475">Final recommendation</text>
+
+  <!-- Message 10: Orchestrator -> HITL -->
+  <g class="msg10 arrow10 text10" style="opacity: 0; animation: fadeIn 0.5s ease-out 4.9s forwards;">
+    <rect fill="#DC143C" stroke="#8B0000" stroke-width="2" x="320" y="520" width="250" height="50" rx="5"/>
+    <text class="actor-text" x="445" y="550">HITL: Request Approval</text>
+  </g>
+</svg>

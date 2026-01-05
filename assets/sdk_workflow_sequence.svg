@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" style="background: #1a1a1a;">
+  <defs>
+    <style>
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes drawLine {
+        from { stroke-dashoffset: 100; }
+        to { stroke-dashoffset: 0; }
+      }
+      .actor-box { fill: #DC143C; stroke: #8B0000; stroke-width: 2; }
+      .actor-box-2 { fill: #B22222; stroke: #8B0000; stroke-width: 2; }
+      .actor-box-3 { fill: #8B0000; stroke: #5C0000; stroke-width: 2; }
+      .actor-text { fill: #fff; font-family: 'Courier New', monospace; font-size: 14px; font-weight: bold; text-anchor: middle; }
+      .message-line { stroke: #36454F; stroke-width: 2; fill: none; stroke-dasharray: 100; stroke-dashoffset: 100; }
+      .message-arrow { fill: #808080; }
+      .message-text { fill: #fff; font-family: Arial, sans-serif; font-size: 12px; }
+      .loop-box { fill: none; stroke: #36454F; stroke-width: 2; stroke-dasharray: 5,5; }
+      .loop-label { fill: #DC143C; font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; }
+      
+      .msg1 { animation: drawLine 0.8s ease-out 0.5s forwards; }
+      .arrow1 { animation: fadeIn 0.3s ease-out 1.2s forwards; opacity: 0; }
+      .text1 { animation: fadeIn 0.3s ease-out 1.2s forwards; opacity: 0; }
+      
+      .msg2 { animation: drawLine 0.8s ease-out 1.5s forwards; }
+      .arrow2 { animation: fadeIn 0.3s ease-out 2.2s forwards; opacity: 0; }
+      .text2 { animation: fadeIn 0.3s ease-out 2.2s forwards; opacity: 0; }
+      
+      .msg3 { animation: drawLine 0.8s ease-out 2.5s forwards; }
+      .arrow3 { animation: fadeIn 0.3s ease-out 3.2s forwards; opacity: 0; }
+      .text3 { animation: fadeIn 0.3s ease-out 3.2s forwards; opacity: 0; }
+      
+      .loop { animation: fadeIn 0.5s ease-out 3.5s forwards; opacity: 0; }
+      
+      .msg4 { animation: drawLine 0.8s ease-out 4s forwards; }
+      .arrow4 { animation: fadeIn 0.3s ease-out 4.7s forwards; opacity: 0; }
+      .text4 { animation: fadeIn 0.3s ease-out 4.7s forwards; opacity: 0; }
+      
+      .msg5 { animation: drawLine 0.8s ease-out 5s forwards; }
+      .arrow5 { animation: fadeIn 0.3s ease-out 5.7s forwards; opacity: 0; }
+      .text5 { animation: fadeIn 0.3s ease-out 5.7s forwards; opacity: 0; }
+      
+      .msg6 { animation: drawLine 0.8s ease-out 6s forwards; }
+      .arrow6 { animation: fadeIn 0.3s ease-out 6.7s forwards; opacity: 0; }
+      .text6 { animation: fadeIn 0.3s ease-out 6.7s forwards; opacity: 0; }
+      
+      .msg7 { animation: drawLine 0.8s ease-out 7s forwards; }
+      .arrow7 { animation: fadeIn 0.3s ease-out 7.7s forwards; opacity: 0; }
+      .text7 { animation: fadeIn 0.3s ease-out 7.7s forwards; opacity: 0; }
+    </style>
+  </defs>
+
+  <!-- Actors -->
+  <g id="developer">
+    <rect class="actor-box" x="50" y="20" width="120" height="40" rx="5"/>
+    <text class="actor-text" x="110" y="45">Developer</text>
+    <line x1="110" y1="60" x2="110" y2="560" stroke="#36454F" stroke-width="2" stroke-dasharray="5,5"/>
+  </g>
+
+  <g id="sdk">
+    <rect class="actor-box-2" x="220" y="20" width="140" height="40" rx="5"/>
+    <text class="actor-text" x="290" y="45">WorkflowBuilder</text>
+    <line x1="290" y1="60" x2="290" y2="560" stroke="#36454F" stroke-width="2" stroke-dasharray="5,5"/>
+  </g>
+
+  <g id="api">
+    <rect class="actor-box-3" x="420" y="20" width="120" height="40" rx="5"/>
+    <text class="actor-text" x="480" y="45">Nexus API</text>
+    <line x1="480" y1="60" x2="480" y2="560" stroke="#36454F" stroke-width="2" stroke-dasharray="5,5"/>
+  </g>
+
+  <g id="engine">
+    <rect class="actor-box" x="600" y="20" width="150" height="40" rx="5"/>
+    <text class="actor-text" x="675" y="45">Workflow Engine</text>
+    <line x1="675" y1="60" x2="675" y2="560" stroke="#36454F" stroke-width="2" stroke-dasharray="5,5"/>
+  </g>
+
+  <!-- Message 1: Developer -> SDK -->
+  <line class="message-line msg1" x1="110" y1="100" x2="290" y2="100"/>
+  <polygon class="message-arrow arrow1" points="290,100 280,95 280,105"/>
+  <text class="message-text text1" x="200" y="95">Define Tasks &amp; Logic</text>
+
+  <!-- Message 2: SDK -> SDK (self) -->
+  <path class="message-line msg2" d="M 290 130 L 320 130 L 320 150 L 290 150" fill="none"/>
+  <polygon class="message-arrow arrow2" points="290,150 300,145 300,155"/>
+  <text class="message-text text2" x="330" y="140">Compile DAG</text>
+
+  <!-- Message 3: Developer -> API -->
+  <line class="message-line msg3" x1="110" y1="180" x2="480" y2="180"/>
+  <polygon class="message-arrow arrow3" points="480,180 470,175 470,185"/>
+  <text class="message-text text3" x="295" y="175">POST /api/workflows</text>
+
+  <!-- Message 4: API -> Engine -->
+  <line class="message-line msg4" x1="480" y1="210" x2="675" y2="210"/>
+  <polygon class="message-arrow arrow4" points="675,210 665,205 665,215"/>
+  <text class="message-text text4" x="577" y="205">Enqueue Job</text>
+
+  <!-- Loop -->
+  <rect class="loop-box loop" x="90" y="240" width="610" height="140" rx="5"/>
+  <text class="loop-label loop" x="100" y="255">loop [Polling / Streaming]</text>
+
+  <!-- Message 5: Developer -> API (inside loop) -->
+  <line class="message-line msg5" x1="110" y1="280" x2="480" y2="280"/>
+  <polygon class="message-arrow arrow5" points="480,280 470,275 470,285"/>
+  <text class="message-text text5" x="295" y="275">GET /api/events (SSE)</text>
+
+  <!-- Message 6: Engine -> API (return) -->
+  <line class="message-line msg6" x1="675" y1="310" x2="480" y2="310" stroke-dasharray="5,3"/>
+  <polygon class="message-arrow arrow6" points="480,310 490,305 490,315"/>
+  <text class="message-text text6" x="577" y="305">Task Updates</text>
+
+  <!-- Message 7: API -> Developer (return) -->
+  <line class="message-line msg7" x1="480" y1="340" x2="110" y2="340" stroke-dasharray="5,3"/>
+  <polygon class="message-arrow arrow7" points="110,340 120,335 120,345"/>
+  <text class="message-text text7" x="295" y="335">Real-time Events</text>
+
+  <!-- Final messages -->
+  <line class="message-line" x1="675" y1="420" x2="480" y2="420" stroke-dasharray="5,3" style="animation: drawLine 0.8s ease-out 8s forwards;"/>
+  <polygon class="message-arrow" points="480,420 490,415 490,425" style="animation: fadeIn 0.3s ease-out 8.7s forwards; opacity: 0;"/>
+  <text class="message-text" x="577" y="415" style="animation: fadeIn 0.3s ease-out 8.7s forwards; opacity: 0;">Workflow Complete</text>
+
+  <line class="message-line" x1="110" y1="450" x2="480" y2="450" style="animation: drawLine 0.8s ease-out 9s forwards;"/>
+  <polygon class="message-arrow" points="480,450 470,445 470,455" style="animation: fadeIn 0.3s ease-out 9.7s forwards; opacity: 0;"/>
+  <text class="message-text" x="240" y="445" style="animation: fadeIn 0.3s ease-out 9.7s forwards; opacity: 0;">GET /api/workflows/{id}/result</text>
+
+  <line class="message-line" x1="480" y1="480" x2="110" y2="480" stroke-dasharray="5,3" style="animation: drawLine 0.8s ease-out 10s forwards;"/>
+  <polygon class="message-arrow" points="110,480 120,475 120,485" style="animation: fadeIn 0.3s ease-out 10.7s forwards; opacity: 0;"/>
+  <text class="message-text" x="295" y="475" style="animation: fadeIn 0.3s ease-out 10.7s forwards; opacity: 0;">Final Result</text>
+</svg>
