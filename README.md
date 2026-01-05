@@ -6,9 +6,14 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/tests-passing-brightgreen" />
-  <img src="https://img.shields.io/badge/python-3.9+-blue" />
-  <img src="https://img.shields.io/badge/license-MIT-blue" />
+  <img src="https://img.shields.io/badge/tests-passing-brightgreen?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/python-3.10+-DC143C?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/license-MIT-36454F?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Intel-OpenVINO-0071C5?style=for-the-badge&logo=intel&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-0.100+-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/Kafka-Enabled-231F20?style=for-the-badge&logo=apachekafka&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/Status-Production_Ready-8B0000?style=for-the-badge" />
 </p>
 
 ---
