@@ -65,9 +65,15 @@ It combines **DAG-based workflow orchestration**, **optimized local LLM inferenc
 
 ## Architecture
 
-<div align="center">
-  <img src="assets/architecture_diagram.svg?v=2" width="100%" alt="Nexus Ray Architecture" />
-</div>
+![Nexus Ray Architecture](assets/architecture_diagram.svg)
+
+---
+
+## Workspace Demo
+
+![Nexus Ray Demo](assets/screenshots/Demo.gif)
+
+---
 
 ---
 
@@ -104,7 +110,6 @@ npm run dev
 
 ### Monitoring & UX
 *   **Web Dashboard**: Real-time visualization
-*   **TUI Dashboard**: Terminal-based monitoring
 *   **Observability Layer**: Logs, metrics, and traces
 
 ---
@@ -154,12 +159,16 @@ Nexus Ray includes a suite of specialized tools for developers and researchers:
 
 ### Formal Deliverables
 
+<div align="center">
+
 | Document | Description |
 | :--- | :--- |
 | **[System Design](docs/DESIGN.md)** | Formal Architecture, Component Breakdown & Design Decisions |
 | **[SDK API Reference](docs/SDK_API.md)** | `WorkflowBuilder` fluent API & Dev Guide |
 | **[Reference Agents](docs/REFERENCE_AGENTS.md)** | Documentation for Protein-Drug Discovery & Fab Optimization Agents |
 | **[Performance Report](docs/PERFORMANCE_REPORT.md)** | **Intel® OpenVINO™** Benchmarks (INT8 vs FP16) |
+
+</div>
 
 ---
 
@@ -177,8 +186,9 @@ Meet the minds behind Nexus Ray:
 |       | Name | Role | GitHub |
 | :---: | :--- | :--- | :--- |
 | <img src="https://github.com/rishikoli.png" width="40" height="40" style="border-radius:50%"> |  **Rishikesh Koli** | Project Lead & Architect | [@rishikoli](https://github.com/rishikoli) |
-| <img src="https://github.com/Yashraj045.png" width="40" height="40" style="border-radius:50%"> | **Yashraj Kulkarni** | Core Framework Developer | [@Yashraj045](https://github.com/Yashraj045) |
 | <img src="https://github.com/svpcet0303.png" width="40" height="40" style="border-radius:50%"> | **Anagha Bhure** | QA & Optimization | [@svpcet0303](https://github.com/svpcet0303) |
+| <img src="https://github.com/Yashraj045.png" width="40" height="40" style="border-radius:50%"> | **Yashraj Kulkarni** | Core Framework Developer | [@Yashraj045](https://github.com/Yashraj045) |
+
 
 </div>
 

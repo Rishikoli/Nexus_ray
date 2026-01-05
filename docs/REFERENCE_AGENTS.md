@@ -6,7 +6,102 @@ These agents are not mock-ups; they are functional **7-agent workflows** that ut
 
 ---
 
-## 1. Semiconductor Analysis Flow
+## 1. Protein-Drug Discovery Flow
+Workflow for the Protein-Drug interaction analysis reference agent.
+
+### Overview
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#DC143C','primaryTextColor':'#fff','primaryBorderColor':'#8B0000','lineColor':'#36454F','secondaryColor':'#36454F','tertiaryColor':'#2F4F4F','background':'#1a1a1a','mainBkg':'#DC143C','secondBkg':'#36454F','lineColor':'#808080','border1':'#DC143C','border2':'#36454F','note':'#36454F','noteBkg':'#2F4F4F','noteText':'#fff','text':'#fff','labelText':'#fff','loopTextColor':'#fff','activationBorderColor':'#DC143C','activationBkgColor':'#36454F','sequenceNumberColor':'#1a1a1a'}}}%%
+graph TD
+    START[Protein + Drug Input] --> VALIDATE[Validate Structures]
+    VALIDATE --> PARALLEL{Parallel Analysis}
+    
+    PARALLEL -->|Branch 1| BINDING[Binding Site Prediction]
+    PARALLEL -->|Branch 2| AFFINITY[Affinity Scoring]
+    PARALLEL -->|Branch 3| TOXICITY[Toxicity Assessment]
+    PARALLEL -->|Branch 4| SIMILAR[Similarity Search]
+    
+    BINDING --> CONSENSUS[Multi-Agent Consensus]
+    AFFINITY --> CONSENSUS
+    TOXICITY --> CONSENSUS
+    SIMILAR --> CONSENSUS
+    
+    CONSENSUS --> RANKING[Candidate Ranking]
+    RANKING --> VALIDATION[Cross-Validation]
+    
+    VALIDATION --> GATE{HITL: Expert Review}
+    GATE -->|Approved| REPORT[Generate Report]
+    GATE -->|Rejected| STOP[Stop Workflow]
+    
+    REPORT --> END[Return Results]
+```
+
+### Workflow DAG
+
+<p align="center">
+  <img src="../assets/protein_drug_flow.svg" alt="Protein-Drug Discovery Flow" width="800">
+  <br>
+  <em>Caption: 7-agent workflow for lead candidate discovery and drugability assessment</em>
+</p>
+
+---
+
+### Agent Collaboration
+
+<p align="center">
+  <img src="../assets/protein_agent_sequence.svg" alt="Protein-Drug Agent Collaboration" width="800">
+  <br>
+  <em>Caption: Sequence of agent interactions during the protein discovery process</em>
+</p>
+
+### Live Execution Screenshots
+
+> [!NOTE]
+> **Screenshots Coming Soon**: The following screenshots will demonstrate the Protein-Drug Discovery workflow in action with OpenVINO LLM inference.
+
+**1. Workflow Dashboard**
+
+<p align="center">
+  <img src="../assets/screenshots/protein_dashboard.png" alt="Protein-Drug Workflow Graph" width="800">
+  <br>
+  <em>Caption: Live dashboard displaying the 7-agent protein-drug discovery workflow</em>
+</p>
+
+**2. OpenVINO LLM Inference**
+<!-- TODO: Add screenshot showing OpenVINO Mistral-7B model processing drugability scoring -->
+<p align="center">
+  <img src="../assets/screenshots/protein_llm.png" alt="OpenVINO LLM Processing" width="800">
+  <br>
+  <em>Caption: OpenVINO-optimized Mistral-7B model performing drugability analysis</em>
+</p>
+
+**3. Agent Consensus & Scoring**
+<!-- TODO: Add screenshot of consensus agent combining results from parallel agents -->
+<p align="center">
+  <img src="../assets/screenshots/protein_consensus.png" alt="Multi-Agent Consensus" width="800">
+  <br>
+  <em>Caption: Consensus agent aggregating results from parallel execution branches</em>
+</p>
+
+**4. HITL Expert Review Gate**
+<!-- TODO: Add screenshot of HITL modal for expert approval when drugability score > 0.8 -->
+<p align="center">
+  <img src="../assets/screenshots/protein_hitl.png" alt="HITL Expert Gate" width="800">
+  <br>
+  <em>Caption: Human-in-the-Loop gate requesting expert review before clinical trial approval</em>
+</p>
+
+**5. Final Drug Candidate Report**
+<!-- TODO: Add screenshot of final report with binding affinity, safety profile, and drugability score -->
+<p align="center">
+  <img src="../assets/screenshots/protein_results.png" alt="Final Report" width="800">
+  <br>
+  <em>Caption: Comprehensive drug candidate analysis with all metrics and safety assessments</em>
+</p>
+
+---
+
+## 2. Semiconductor Analysis Flow
 This is the workflow for the Semiconductor defect analysis reference agent.
 
 ### Overview
@@ -34,6 +129,16 @@ graph TD
     
     REPORT --> END[Return Results]
 ```
+
+### Workflow DAG
+
+<p align="center">
+  <img src="../assets/semiconductor_yield_flow.svg" alt="Semiconductor Yield Flow" width="800">
+  <br>
+  <em>Caption: 7-agent DAG for yield optimization showing parallel analysis branches</em>
+</p>
+
+---
 
 ### Detailed Task DAG
 ```mermaid
@@ -104,89 +209,35 @@ The DAG scheduler determines the following execution batches:
 
 **1. Workflow Initialization**
 <!-- TODO: Add screenshot of dashboard showing workflow start with all 7 agents -->
-![Semiconductor Workflow Start](../assets/screenshots/semiconductor_start.png)
-*Caption: Dashboard showing the Semiconductor workflow initialization with all agents in the DAG*
+<p align="center">
+  <img src="../assets/screenshots/semiconductor_start.png" alt="Semiconductor Workflow Start" width="800">
+  <br>
+  <em>Caption: Dashboard showing the Semiconductor workflow initialization with all agents in the DAG</em>
+</p>
 
 **2. Parallel Analysis in Progress**
 <!-- TODO: Add screenshot showing Batch 3 parallel execution (Defect Detection, Historical Comparison, Pattern Analysis, Spatial Clustering) -->
-![Parallel Analysis](../assets/screenshots/semiconductor_parallel.png)
-*Caption: Live view of 4 agents running in parallel during the analysis phase*
+<p align="center">
+  <img src="../assets/screenshots/semiconductor_parallel.png" alt="Parallel Analysis" width="800">
+  <br>
+  <em>Caption: Live view of 4 agents running in parallel during the analysis phase</em>
+</p>
 
 **3. HITL Engineer Approval Gate**
 <!-- TODO: Add screenshot of HITL approval popup/modal requesting engineer approval -->
-![HITL Approval Gate](../assets/screenshots/semiconductor_hitl.png)
-*Caption: Human-in-the-Loop gate requesting engineer approval before recipe deployment*
+<p align="center">
+  <img src="../assets/screenshots/semiconductor_hitl.png" alt="HITL Approval Gate" width="800">
+  <br>
+  <em>Caption: Human-in-the-Loop gate requesting engineer approval before recipe deployment</em>
+</p>
 
 **4. Final Optimization Results**
 <!-- TODO: Add screenshot of completed workflow with optimization recommendations and metrics -->
-![Final Results](../assets/screenshots/semiconductor_results.png)
-*Caption: Completed workflow showing yield improvement recommendations and confidence scores*
-
----
-
-## 2. Protein-Drug Discovery Flow
-Workflow for the Protein-Drug interaction analysis reference agent.
-
-### Overview
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#DC143C','primaryTextColor':'#fff','primaryBorderColor':'#8B0000','lineColor':'#36454F','secondaryColor':'#36454F','tertiaryColor':'#2F4F4F','background':'#1a1a1a','mainBkg':'#DC143C','secondBkg':'#36454F','lineColor':'#808080','border1':'#DC143C','border2':'#36454F','note':'#36454F','noteBkg':'#2F4F4F','noteText':'#fff','text':'#fff','labelText':'#fff','loopTextColor':'#fff','activationBorderColor':'#DC143C','activationBkgColor':'#36454F','sequenceNumberColor':'#1a1a1a'}}}%%
-graph TD
-    START[Protein + Drug Input] --> VALIDATE[Validate Structures]
-    VALIDATE --> PARALLEL{Parallel Analysis}
-    
-    PARALLEL -->|Branch 1| BINDING[Binding Site Prediction]
-    PARALLEL -->|Branch 2| AFFINITY[Affinity Scoring]
-    PARALLEL -->|Branch 3| TOXICITY[Toxicity Assessment]
-    PARALLEL -->|Branch 4| SIMILAR[Similarity Search]
-    
-    BINDING --> CONSENSUS[Multi-Agent Consensus]
-    AFFINITY --> CONSENSUS
-    TOXICITY --> CONSENSUS
-    SIMILAR --> CONSENSUS
-    
-    CONSENSUS --> RANKING[Candidate Ranking]
-    RANKING --> VALIDATION[Cross-Validation]
-    
-    VALIDATION --> GATE{HITL: Expert Review}
-    GATE -->|Approved| REPORT[Generate Report]
-    GATE -->|Rejected| STOP[Stop Workflow]
-    
-    REPORT --> END[Return Results]
-```
-
-### Agent Collaboration
-
-![Protein-Drug Agent Collaboration](../assets/protein_agent_sequence.svg)
-
-### Live Execution Screenshots
-
-> [!NOTE]
-> **Screenshots Coming Soon**: The following screenshots will demonstrate the Protein-Drug Discovery workflow in action with OpenVINO LLM inference.
-
-**1. Workflow Dashboard**
-<!-- TODO: Add screenshot of workflow graph showing all 7 agents -->
-![Protein-Drug Workflow Graph](../assets/screenshots/protein_dashboard.png)
-*Caption: Live dashboard displaying the 7-agent protein-drug discovery workflow*
-
-**2. OpenVINO LLM Inference**
-<!-- TODO: Add screenshot showing OpenVINO Mistral-7B model processing drugability scoring -->
-![OpenVINO LLM Processing](../assets/screenshots/protein_llm.png)
-*Caption: OpenVINO-optimized Mistral-7B model performing drugability analysis*
-
-**3. Agent Consensus & Scoring**
-<!-- TODO: Add screenshot of consensus agent combining results from parallel agents -->
-![Multi-Agent Consensus](../assets/screenshots/protein_consensus.png)
-*Caption: Consensus agent aggregating results from parallel execution branches*
-
-**4. HITL Expert Review Gate**
-<!-- TODO: Add screenshot of HITL modal for expert approval when drugability score > 0.8 -->
-![HITL Expert Gate](../assets/screenshots/protein_hitl.png)
-*Caption: Human-in-the-Loop gate requesting expert review before clinical trial approval*
-
-**5. Final Drug Candidate Report**
-<!-- TODO: Add screenshot of final report with binding affinity, safety profile, and drugability score -->
-![Final Report](../assets/screenshots/protein_results.png)
-*Caption: Comprehensive drug candidate analysis with all metrics and safety assessments*
+<p align="center">
+  <img src="../assets/screenshots/semiconductor_results.png" alt="Final Results" width="800">
+  <br>
+  <em>Caption: Completed workflow showing yield improvement recommendations and confidence scores</em>
+</p>
 
 ---
 
@@ -201,3 +252,26 @@ python -m src.cli.run_workflow --name protein_drug_discovery
 # Run Semiconductor Optimization
 python -m src.cli.run_workflow --name semiconductor_yield
 ```
+
+---
+
+## 4. Intel® OpenVINO™ Optimization
+
+A critical requirement for local-first agent frameworks is efficient resource usage. Nexus Ray utilizes OpenVINO™ specific optimizations (INT8 quantization) to run LLM inference on standard consumer hardware.
+
+### Memory Efficiency (INT8 vs FP16)
+
+By quantizing the **Mistral-7B** model to INT8 precision using NNCF (Neural Network Compression Framework), we achieved a significantly lower memory footprint without compromising agent reasoning accuracy.
+
+<p align="center">
+  <img src="../assets/screenshots/memory_benchmark.png" alt="Memory Benchmark" width="800">
+  <br>
+  <em>Caption: Comparison of memory footprint showing 46% reduction with INT8 optimization on Intel® Core™ i7-12700K</em>
+</p>
+
+**Performance Gains:**
+*   **Memory Footprint**: Reduced from **16.5 GB** (FP16) to **8.9 GB** (INT8).
+*   **Latency**: 83% reduction in token generation time.
+*   **Throughput**: 2.28 tokens/sec (CPU only), enabling real-time interactivity.
+
+For full details, see the **[Performance Report](PERFORMANCE_REPORT.md)**.

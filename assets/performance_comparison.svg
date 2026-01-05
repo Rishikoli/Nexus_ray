@@ -72,7 +72,7 @@
   </g>
 
   <!-- Metric 2: Latency (Increased vertical spacing) -->
-  <g transform="translate(100, 350)">
+  <g transform="translate(100, 310)">
     <text class="metric-label" x="0" y="0">🚀 Response Latency</text>
     
     <!-- FP16 Bar -->
@@ -94,7 +94,7 @@
   </g>
 
   <!-- Metric 3: Memory (Increased vertical spacing) -->
-  <g transform="translate(100, 550)">
+  <g transform="translate(100, 480)">
     <text class="metric-label" x="0" y="-10">💾 Memory Footprint</text>
     
     <g class="slide-3">
@@ -115,7 +115,7 @@
   </g>
   
   <!-- Footer (Adjusted Y) -->
-  <text x="500" y="625" text-anchor="middle" fill="#64748b" font-family="'SF Pro Text', sans-serif" font-size="12px">
+  <text x="500" y="580" text-anchor="middle" fill="#64748b" font-family="'SF Pro Text', sans-serif" font-size="12px">
     Benchmarked on Intel® Core™ i7-12700K • 32GB RAM • Ubuntu 22.04
   </text>
 </svg>

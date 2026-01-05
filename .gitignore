@@ -5,6 +5,9 @@ node_modules/
 __pycache__/
 venv/
 .env
+dist/
+build/
+frontend/dist/
 
 # =========================
 # Models & Weights
@@ -21,6 +24,8 @@ mistral-7b-*/
 # =========================
 *.log
 *_debug.log
+backend.log
+frontend/frontend.log
 
 # =========================
 # Benchmarks / Notebooks
@@ -33,3 +38,4 @@ mistral-7b-*/
 # =========================
 .DS_Store
 Thumbs.db
+walkthrough.md

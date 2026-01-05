@@ -1,51 +1,84 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import SmilesDrawer from 'smiles-drawer';
 
 const Molecule2DViewer = ({ smiles = "C8H11NO2", width = "100%", height = 200 }) => {
-    // Deterministic pseudo-random generation based on input string
-    const generateStructure = (seedStr) => {
-        let seed = 0;
-        for (let i = 0; i < seedStr.length; i++) seed = (seed << 5) - seed + seedStr.charCodeAt(i);
+    // Generate a unique ID for the canvas to ensure robust targeting
+    const canvasId = useRef(`molecule-canvas-${Math.random().toString(36).substr(2, 9)}`);
+    const canvasRef = useRef(null);
 
-        const random = () => {
-            const x = Math.sin(seed++) * 10000;
-            return x - Math.floor(x);
-        };
+    useEffect(() => {
+        if (!canvasRef.current || !smiles) return;
 
-        const numAtoms = Math.floor(random() * 8) + 6; // 6-14 atoms
-        const atoms = [];
-        const bonds = [];
+        // Ensure canvas has dimensions
+        const rect = canvasRef.current.parentElement.getBoundingClientRect();
+        if (rect.width === 0 || rect.height === 0) return;
 
-        // Center
-        const cx = 50;
-        const cy = 50;
+        // Update canvas logical size to match display size (prevents blur)
+        canvasRef.current.width = rect.width;
+        canvasRef.current.height = rect.height;
 
-        // Generate Atoms
-        for (let i = 0; i < numAtoms; i++) {
-            const angle = random() * Math.PI * 2;
-            const dist = random() * 30 + 10; // 10-40% radius
-            atoms.push({
-                id: i,
-                x: cx + Math.cos(angle) * dist,
-                y: cy + Math.sin(angle) * dist,
-                size: random() * 4 + 4, // 4-8 radius
-                element: ['C', 'N', 'O', 'H'][Math.floor(random() * 4)],
-                color: ['#6D5CFF', '#00D2FF', '#FF3B30', '#34C759'][Math.floor(random() * 4)]
+        try {
+            // WORKAROUND: Use SvgDrawer directly because Drawer.js has an argument mismatch bug
+            // causing it to skip initialization (interprets infoOnly as an empty array).
+            const drawer = new SmilesDrawer.SvgDrawer({
+                width: rect.width,
+                height: rect.height,
+                compactDrawing: false,
+                experimentalSSSR: true,
+                kkThreshold: 0.1,
+                fill: false,
+                padding: 5.0,
+                scale: 1.0,
+                bondThickness: 2.0,
+                bondLength: 15,
+                shortBondLength: 0.85,
+                bondSpacing: 0.18 * 15,
+                explicitHydrogens: false,
+                overlapResolutionIterations: 1
             });
+
+            SmilesDrawer.parse(smiles, (tree) => {
+                if (tree) {
+                    // Create a detached SVG element for the drawer to populate
+                    // Pass null/false for weights/infoOnly to ensure correct argument alignment
+                    // SvgDrawer.draw(data, target, themeName, weights, infoOnly, highlight_atoms)
+                    const svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                    svgElement.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+                    svgElement.setAttribute('width', rect.width);
+                    svgElement.setAttribute('height', rect.height);
+
+                    // explicit explicit high contrast theme
+                    const theme = {
+                        root: '#ffffff',
+                        bond: '#ffffff',
+                        text: '#ffffff',
+                        BACKGROUND: '#000000',
+                        C: '#ffffff', O: '#ff4d4d', N: '#4d94ff', F: '#00cc00',
+                        Cl: '#00cc00', Br: '#a52a2a', I: '#9400d3', S: '#ffd700', P: '#ffa500'
+                    };
+
+                    // Draw to SVG first
+                    drawer.draw(tree, svgElement, 'dark', null, false);
+
+                    // Then converting to canvas
+                    if (drawer.svgWrapper) {
+                        drawer.svgWrapper.toCanvas(canvasRef.current, rect.width, rect.height);
+                        console.log('[Molecule2DViewer] Rendered via SvgDrawer workaround');
+                    } else {
+                        console.error('[Molecule2DViewer] svgWrapper not initialized');
+                    }
+                } else {
+                    console.error('[Molecule2DViewer] Parsed tree is null');
+                }
+            }, (err) => {
+                console.error('[Molecule2DViewer] Parse error:', err);
+            });
+        } catch (e) {
+            console.error('[Molecule2DViewer] Initialization error:', e);
         }
 
-        // Generate Bonds (MST-ish)
-        for (let i = 1; i < numAtoms; i++) {
-            const target = Math.floor(random() * i);
-            bonds.push({ source: i, target: target });
-        }
-        // Extra random bonds for rings
-        if (random() > 0.5) bonds.push({ source: 0, target: numAtoms - 1 });
-
-        return { atoms, bonds };
-    };
-
-    const { atoms, bonds } = useMemo(() => generateStructure(smiles), [smiles]);
+    }, [smiles, width, height]);
 
     return (
         <motion.div
@@ -65,69 +98,16 @@ const Molecule2DViewer = ({ smiles = "C8H11NO2", width = "100%", height = 200 })
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
         >
-            <motion.svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 100 100"
-                preserveAspectRatio="xMidYMid meet"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-            >
-                {/* Bonds */}
-                {bonds.map((bond, i) => {
-                    const s = atoms[bond.source];
-                    const t = atoms[bond.target];
-                    return (
-                        <motion.line
-                            key={`bond-${i}`}
-                            x1={s.x} y1={s.y} x2={t.x} y2={t.y}
-                            stroke="rgba(255,255,255,0.2)"
-                            strokeWidth="1.5"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            animate={{ pathLength: 1, opacity: 1 }}
-                            transition={{ duration: 1, delay: i * 0.1 }}
-                        />
-                    );
-                })}
+            <canvas
+                id={canvasId.current}
+                ref={canvasRef}
+                width={typeof width === 'number' ? width : 400}
+                height={typeof height === 'number' ? height : 180}
+                style={{ width: '100%', height: '100%' }}
+            />
 
-                {/* Atoms */}
-                {atoms.map((atom, i) => (
-                    <motion.g
-                        key={`atom-${i}`}
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: [1, 1.2, 1], opacity: 1 }}
-                        transition={{
-                            scale: { duration: 3, repeat: Infinity, repeatType: "reverse", delay: i * 0.2 },
-                            opacity: { duration: 0.5 }
-                        }}
-                    >
-                        <circle
-                            cx={atom.x}
-                            cy={atom.y}
-                            r={atom.size}
-                            fill={atom.color}
-                            fillOpacity="0.8"
-                            stroke="rgba(255,255,255,0.4)"
-                            strokeWidth="1"
-                        />
-                        <text
-                            x={atom.x}
-                            y={atom.y}
-                            dy=".3em"
-                            textAnchor="middle"
-                            fill="white"
-                            fontSize="4px"
-                            fontFamily="Arial"
-                            fontWeight="bold"
-                            style={{ pointerEvents: 'none' }}
-                        >
-                            {atom.element}
-                        </text>
-                    </motion.g>
-                ))}
-            </motion.svg>
             <div style={{ position: 'absolute', bottom: '8px', right: '12px', fontSize: '10px', color: 'var(--text-muted)', fontFamily: 'monospace' }}>
-                2D LIVE VIEW
+                LIVE RENDER (SmilesDrawer)
             </div>
         </motion.div>
     );
