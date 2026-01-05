@@ -9,6 +9,31 @@
 
 The **Nexus Ray SDK** provides a fluent, Pythonic API for defining complex, multi-agent workflows. It abstracts away the complexity of DAG management, Kafka messaging, and state persistence, allowing you to focus on agent logic.
 
+### Workflow Lifecycle
+
+```mermaid
+sequenceDiagram
+    participant Dev as Developer
+    participant SDK as WorkflowBuilder
+    participant API as Nexus API
+    participant Engine as Workflow Engine
+
+    Dev->>SDK: Define Tasks & Logic
+    SDK->>SDK: Compile DAG
+    Dev->>API: POST /api/workflows (Submit)
+    API->>Engine: Enqueue Job
+    
+    loop Polling / Streaming
+        Dev->>API: GET /api/events (SSE)
+        Engine-->>API: Task Updates
+        API-->>Dev: Real-time Events
+    end
+    
+    Engine-->>API: Workflow Complete
+    Dev->>API: GET /api/workflows/{id}/result
+    API-->>Dev: Final Result
+```
+
 ### Quick Example
 
 ```python

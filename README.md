@@ -49,7 +49,7 @@ It combines **DAG-based workflow orchestration**, **optimized local LLM inferenc
 ### Advanced Intelligence
 *   **OpenVINO LLM Inference**: Optimized Mistral-7B (INT8 / FP16).
 *   **Vector Memory**: Semantic context retention and recall.
-*   **Reference Agents**: Research, science, and industry pipelines.
+*   **Reference Agents**: Research, science, and industry pipelines (7-agent workflows).
 
 ### Enterprise Readiness
 *   **Kafka Messaging**: Event-driven, decoupled execution.
@@ -58,7 +58,7 @@ It combines **DAG-based workflow orchestration**, **optimized local LLM inferenc
 
 ---
 
-## <img src="./assets/Architecture_icon.gif" width="40" height="40" style="vertical-align: middle;"> Architecture
+## Architecture
 
 ![Nexus Ray Architecture](./assets/architecture_diagram.svg)
 
