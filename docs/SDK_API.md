@@ -12,6 +12,7 @@ The **Nexus Ray SDK** provides a fluent, Pythonic API for defining complex, mult
 ### Workflow Lifecycle
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#DC143C','primaryTextColor':'#fff','primaryBorderColor':'#8B0000','lineColor':'#36454F','secondaryColor':'#36454F','tertiaryColor':'#2F4F4F','background':'#1a1a1a','mainBkg':'#DC143C','secondBkg':'#36454F','actorBorder':'#DC143C','actorBkg':'#36454F','actorTextColor':'#fff','actorLineColor':'#808080','signalColor':'#DC143C','signalTextColor':'#fff','labelBoxBkgColor':'#36454F','labelBoxBorderColor':'#DC143C','labelTextColor':'#fff','loopTextColor':'#fff','noteBorderColor':'#DC143C','noteBkgColor':'#2F4F4F','noteTextColor':'#fff','activationBorderColor':'#DC143C','activationBkgColor':'#36454F','sequenceNumberColor':'#1a1a1a'}}}%%
 sequenceDiagram
     participant Dev as Developer
     participant SDK as WorkflowBuilder
@@ -168,9 +169,60 @@ print(wf.visualize())
 
 Once deployed, workflows are accessible via the FastAPI backend.
 
-*   `POST /api/workflows`: Submit a new workflow execution.
-*   `GET /api/workflows/{id}/status`: Poll execution status.
-*   `GET /api/events`: Server-Sent Events (SSE) stream for real-time updates.
+#### 1. Submit Workflow
+**POST** `/api/workflows`
+
+Submit a new workflow execution request.
+
+**Request Body**
+```json
+{
+  "workflow_name": "protein_drug_discovery",
+  "input_data": {
+    "protein_sequence": "MSTAVLEN...",
+    "drug_smiles": "CC(=O)OC1=C..."
+  }
+}
+```
+
+**Response** (`201 Created`)
+```json
+{
+  "workflow_id": "wf-8a9d-4b5c",
+  "status": "processing",
+  "message": "Workflow started successfully"
+}
+```
+
+#### 2. Get Status
+**GET** `/api/workflows/{id}/status`
+
+Poll for the execution status of a specific workflow.
+
+**Response** (`200 OK`)
+```json
+{
+  "workflow_id": "wf-8a9d-4b5c",
+  "status": "completed",
+  "current_step": "final_report",
+  "result": {
+    "drugability_score": 0.92,
+    "safety_check": "passed"
+  }
+}
+```
+
+#### 3. Real-time Events
+**GET** `/api/events`
+
+Subscribe to Server-Sent Events (SSE) for live updates.
+
+**Stream Format**
+```text
+data: {"type": "step_start", "workflow_id": "...", "step": "docking"}
+
+data: {"type": "step_complete", "workflow_id": "...", "result": {...}}
+```
 
 ### Executing via CLI
 
