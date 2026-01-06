@@ -2,7 +2,7 @@
 <h1 align="center">Nexus Ray Framework</h1>
 
 <p align="center">
-  <strong>Enterprise-grade AI agent workflow orchestration with real Intel® OpenVINO™ LLM integration</strong>
+  <strong>Agentic AI agent workflow orchestration with real Intel® OpenVINO™ LLM integration</strong>
 </p>
 
 <p align="center">
@@ -16,12 +16,12 @@
   <img src="https://img.shields.io/badge/Status-Production_Ready-8B0000?style=for-the-badge" />
 </p>
 
----
+<br>
 
 ## Overview
 
 **Nexus Ray** is a **production-ready framework** for building autonomous, multi-agent AI systems.  
-It combines **DAG-based workflow orchestration**, **optimized local LLM inference using Intel® OpenVINO™**, and an **event-driven architecture** to deliver scalable, observable, and enterprise-safe AI pipelines.
+It combines **DAG-based workflow orchestration**, **optimized local LLM inference using Intel® OpenVINO™**, and an **event-driven architecture** to deliver scalable and observable AI pipelines.
 
 **Designed for:**
 *   Agentic AI systems
@@ -29,7 +29,17 @@ It combines **DAG-based workflow orchestration**, **optimized local LLM inferenc
 *   Local-first, privacy-preserving inference
 *   Production deployments
 
----
+<br>
+
+## Beyond the Core Specialized Innovations
+
+<div align="center">
+
+![Latest Breakthroughs](assets/whats_new.svg)
+
+</div>
+
+<br>
 
 ## Technical Stack
 
@@ -42,7 +52,7 @@ It combines **DAG-based workflow orchestration**, **optimized local LLM inferenc
   <img src="https://img.shields.io/badge/Frontend-React_Input-94A3B8?style=for-the-badge&logo=react&logoColor=black" />
 </p>
 
----
+<br>
 
 ## Key Capabilities
 
@@ -56,27 +66,24 @@ It combines **DAG-based workflow orchestration**, **optimized local LLM inferenc
 *   **Vector Memory**: Semantic context retention and recall.
 *   **Reference Agents**: Research, science, and industry pipelines (7-agent workflows).
 
-### Enterprise Readiness
+### Deployment Readiness
 *   **Kafka Messaging**: Event-driven, decoupled execution.
 *   **Observability**: Metrics, traces, and live execution feed.
 *   **Production APIs**: FastAPI backend with Docker support.
 
----
+<br>
 
 ## Architecture
 
-
 ![Core DAG Architecture](assets/architecture_diagram.svg)
 
----
+<br>
 
 ## Workspace Demo
 
 ![Nexus Ray Demo](assets/screenshots/Demo.gif)
 
----
-
----
+<br>
 
 ## Quick Start
 
@@ -100,7 +107,7 @@ npm run dev
 *   **Agent execution & token metrics** tracking
 *   **Human-in-the-Loop (HITL) approvals** for critical steps
 
----
+<br>
 
 ## System Components
 
@@ -113,7 +120,7 @@ npm run dev
 *   **Web Dashboard**: Real-time visualization
 *   **Observability Layer**: Logs, metrics, and traces
 
----
+<br>
 
 ## Intel® OpenVINO™ Benchmarks
 
@@ -150,29 +157,43 @@ Nexus Ray includes a suite of specialized tools for developers and researchers:
 *   Use **`scripts/debug_imports.py`** to resolve environment/dependency issues.
 *   Use **`scripts/debug_hf.py`** to diagnose Hugging Face model loading errors.
 
----
+<br>
 
 ## Documentation
 
 ### Formal Deliverables
-
 <div align="center">
 
-| Document | Description |
-| :--- | :--- |
-| **[System Design](docs/DESIGN.md)** | Formal Architecture, Component Breakdown & Design Decisions |
-| **[SDK API Reference](docs/SDK_API.md)** | `WorkflowBuilder` fluent API & Dev Guide |
-| **[Reference Agents](docs/REFERENCE_AGENTS.md)** | Documentation for Protein-Drug Discovery & Fab Optimization Agents |
-| **[Performance Report](docs/PERFORMANCE_REPORT.md)** | **Intel® OpenVINO™** Benchmarks (INT8 vs FP16) |
+<br>
+
+> ### **[<u>System Design</u>](docs/DESIGN.md)**
+> *Deep Dive into Framework Architecture, Multi-Agent Orchestration, and Core Design Decisions*
+
+<br>
+
+> ### **[<u>SDK API Reference</u>](docs/SDK_API.md)**
+> *Comprehensive Guide to the `WorkflowBuilder` Fluent API and Programmatic Agent Coordination*
+
+<br>
+
+> ### **[<u>Reference Agents</u>](docs/REFERENCE_AGENTS.md)**
+> *In-depth Documentation for 7-Agent Reference Pipelines in Life Sciences and Semiconductor Manufacturing*
+
+<br>
+
+> ### **[<u>Performance Report</u>](docs/PERFORMANCE_REPORT.md)**
+> *Comparative Performance Analysis of Intel® OpenVINO™ Optimizations (INT8 vs. FP16 Baseline)*
+
+<br>
 
 </div>
 
----
+<br>
 
 ## License
 Released under the MIT License. Built for research, industry, and production AI systems.
 
----
+<br>
 
 <h2 align="center">The Team</h2>
 
@@ -186,7 +207,4 @@ Meet the minds behind Nexus Ray:
 | <img src="https://github.com/svpcet0303.png" width="40" height="40" style="border-radius:50%"> | **Anagha Bhure** | QA & Optimization | [@svpcet0303](https://github.com/svpcet0303) |
 | <img src="https://github.com/Yashraj045.png" width="40" height="40" style="border-radius:50%"> | **Yashraj Kulkarni** | Core Framework Developer | [@Yashraj045](https://github.com/Yashraj045) |
 
-
 </div>
-
----

@@ -4,6 +4,7 @@
 **Hardware**: Intel x86_64 Environment  
 **Subject**: OpenVINO Optimization Impact and Model Comparison
 
+
 ---
 
 ## 1. Executive Summary
@@ -64,7 +65,7 @@ For both high-tier reasoning (Mistral-7B) and retrieval optimization (BGE Rerank
 
 ---
 
-## 5. Methodology & Reproducibility
+## 5. Methodology & Reserach
 
 The benchmarks for **Mistral-7B (OpenVINO)** and the **BGE Reranker** were generated using a rigorous, three-stage evaluation process:
 

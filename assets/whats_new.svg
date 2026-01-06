@@ -1,0 +1,86 @@
+<svg width="800" height="420" viewBox="0 0 800 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes pinkGlow {
+      0% { filter: drop-shadow(0 0 2px #E11D48); }
+      50% { filter: drop-shadow(0 0 12px #FB7185); }
+      100% { filter: drop-shadow(0 0 2px #E11D48); }
+    }
+    @keyframes graphiteGlow {
+      0% { filter: drop-shadow(0 0 2px #475569); }
+      50% { filter: drop-shadow(0 0 8px #94A3B8); }
+      100% { filter: drop-shadow(0 0 2px #475569); }
+    }
+    
+    .card-pink {
+      fill: #E11D48;
+      animation: pinkGlow 3s infinite ease-in-out;
+    }
+    .card-graphite {
+      fill: #334155;
+      animation: graphiteGlow 3s infinite ease-in-out;
+    }
+    .card:hover {
+      filter: brightness(1.2) !important;
+      transform: translateY(-2px);
+    }
+    .title-text {
+      font: bold 18px 'Segoe UI', Tahoma, sans-serif;
+      fill: #FFFFFF;
+    }
+    .desc-text {
+      font: 14px 'Segoe UI', Tahoma, sans-serif;
+      fill: #f1f5f9;
+      fill-opacity: 0.9;
+    }
+    .stat-text {
+      font: bold 22px 'Segoe UI', Tahoma, sans-serif;
+      fill: #FFFFFF;
+    }
+    .label-text {
+      font: bold 12px 'Segoe UI', Tahoma, sans-serif;
+      fill: #94a3b8;
+      letter-spacing: 2px;
+    }
+  </style>
+
+  <!-- Container -->
+  <rect x="0" y="0" width="800" height="420" rx="16" fill="#030712"/>
+
+  <text x="40" y="40" class="label-text">BEYOND THE CORE SPECIALIZED INNOVATIONS</text>
+
+  <!-- Card 1: Reranker (Vibrant Pink Glow) -->
+  <g transform="translate(40, 70)" class="card">
+    <rect x="0" y="0" width="340" height="140" rx="12" class="card-pink"/>
+    <text x="25" y="40" class="title-text">OpenVINO™ Reranker Subsystem</text>
+    <text x="25" y="65" class="desc-text">Custom INT8 Quantization Pipeline</text>
+    <text x="25" y="85" class="desc-text">Optimized for Local CPU HW</text>
+    <text x="25" y="120" class="stat-text">82.8% THROUGHPUT GAIN</text>
+  </g>
+
+  <!-- Card 2: Benchmarks (Graphite Glow) -->
+  <g transform="translate(420, 70)" class="card">
+    <rect x="0" y="0" width="340" height="140" rx="12" class="card-graphite" style="animation-delay: 0.75s;"/>
+    <text x="25" y="40" class="title-text">High Fidelity Validation Suite</text>
+    <text x="25" y="65" class="desc-text">Hardware Native Inference Profiling</text>
+    <text x="25" y="85" class="desc-text">for Verified Local Execution</text>
+    <text x="25" y="120" class="stat-text">45% LATENCY DROP</text>
+  </g>
+
+  <!-- Card 3: Production Reasoning (Graphite Glow) -->
+  <g transform="translate(40, 240)" class="card">
+    <rect x="0" y="0" width="340" height="140" rx="12" class="card-graphite" style="animation-delay: 1.5s;"/>
+    <text x="25" y="40" class="title-text">Distributed Logic Scaling</text>
+    <text x="25" y="65" class="desc-text">Mistral 7B OpenVINO (INT8)</text>
+    <text x="25" y="85" class="desc-text">Production Grade Stable Reasoning</text>
+    <text x="25" y="120" class="stat-text">32x PERFORMANCE WIN</text>
+  </g>
+
+  <!-- Card 4: Reference Flows (Vibrant Pink Glow) -->
+  <g transform="translate(420, 240)" class="card">
+    <rect x="0" y="0" width="340" height="140" rx="12" class="card-pink" style="animation-delay: 2.25s;"/>
+    <text x="25" y="40" class="title-text">Industrial Agent Blueprints</text>
+    <text x="25" y="65" class="desc-text">Multi Agent Life Science and</text>
+    <text x="25" y="85" class="desc-text">Semiconductor Fab Pipelines</text>
+    <text x="25" y="120" class="stat-text">7 AGENT ORCHESTRATION</text>
+  </g>
+</svg>
