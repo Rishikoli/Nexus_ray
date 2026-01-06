@@ -8,7 +8,7 @@
 
 ## 1. Executive Summary
 
-This report provides a multi-dimensional analysis of Intel OpenVINO performance benefits within the Nexus Ray framework. We evaluate TinyLlama-1.1B across various precision modes to determine the optimal deployment strategy for edge and industrial environments.
+This report provides a multi-dimensional analysis of Intel OpenVINO performance benefits within the Nexus Ray framework. We evaluate high-tier reasoning engines and retrieval optimization models to determine the optimal deployment strategy for enterprise and industrial environments.
 
 **Key Findings:**
 *   **Production Breakthrough**: For reasoning-tier models (Mistral-7B), OpenVINO INT8 achieved a **32x throughput increase**, transforming a 139ms lag into a **22ms instantaneous response**.
@@ -25,11 +25,7 @@ Mistral-7B is the engine for deep reasoning and complex tool-use within the Nexu
 
 ### Mistral-7B Performance Multiplier
 
-| Metric | Mistral-7B (FP16 Baseline) | Mistral-7B (Optimized INT8) | Impact |
-| :--- | :---: | :---: | :---: |
-| Throughput (TPS) | 0.07 tok/s | **2.28 tok/s** | **🚀 32x Faster** |
-| Latency / Request | 139.28 ms | **22.04 ms** | **⚡ 84% Reduction** |
-| Memory Usage | 16.5 GB | **8.9 GB** | **📉 -46% Savings** |
+![Mistral-7B Performance Multiplier](../assets/Mistral_performance.svg)
 
 ---
 
@@ -48,10 +44,10 @@ Rerankers are critical for high-accuracy RAG (Retrieval-Augmented Generation). B
 
 ### BGE Reranker Performance Comparison (CPU)
 
-| Framework | Latency / Pair | Pairs / Second | Improvement |
-| :--- | :---: | :---: | :---: |
-| PyTorch (Baseline) | 133.51 ms | 7.49 | - |
-| **OpenVINO (Optimized)** | **33.76 ms** | **29.62** | ** 4.0x faster** |
+| Framework | Latency / Pair | Pairs / Second | Memory Usage | Cold Start | Improvement |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| PyTorch (Baseline) | 133.51 ms | 7.49 | 2.26 GB | 0.71 s | - |
+| **OpenVINO (Optimized)** | **33.76 ms** | **29.62** | 2.50 GB | 1.96 s | **🚀 4.0x faster** |
 
 ### Reranker Precision Selection Guide
 
