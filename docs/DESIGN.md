@@ -39,22 +39,22 @@ The system is built to scale from a single workstation to a global industrial cl
 
 ### 1.2 Core Components
 
-> ### 🟢 **Interface Layer**
+> ### **Interface Layer**
 > Managed by a **FastAPI** backend, this layer provides a high-throughput gateway for flow definitions and real-time status streaming via Server-Sent Events (SSE).
 
 <br>
 
-> ### 🧠 **Core Orchestrator**
+> ### **Core Orchestrator**
 > The centralized brain. It performs cycle detection on incoming DAGs, manages state transitions, and enforces industrial guardrails before task scheduling.
 
 <br>
 
-> ### ⚡ **Execution Runtime**
+> ### **Execution Runtime**
 > Fully decoupled workers that process agentic tasks. These utilize **Intel® OpenVINO™** INT8 models (Mistral-7B / BGE Reranker) for near-instant inference and tool execution.
 
 <br>
 
-> ### 🖇️ **Communication Mesh**
+> ### **Communication Mesh**
 > Powered by **Apache Kafka**, ensuring that every agent decision is persisted and that the system remains responsive even under extreme task loads.
 
 <br>
