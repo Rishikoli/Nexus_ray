@@ -12,7 +12,7 @@ This report provides a multi-dimensional analysis of Intel OpenVINO performance 
 
 **Key Findings:**
 *   **Production Breakthrough**: For reasoning-tier models (Mistral-7B), OpenVINO INT8 achieved a **32x throughput increase**, transforming a 139ms lag into a **22ms instantaneous response**.
-*   **Retrieval Excellence**: The **BGE Reranker (OpenVINO)** delivers a **4x performance gain** over the PyTorch baseline, reducing latency from 133ms to **33.7ms**.
+*   **Retrieval Excellence**: The **BGE Reranker (OpenVINO)** demonstrates an **82% throughput boost** on standard CPU hardware, reducing average latency from 357ms to just **195ms**.
 *   **Industrial Scalability**: Local INT8 inference supports **dense multi-agent swarms** on standard Intel hardware, reducing memory footprint by **46%** across the board.
 
 ---
@@ -42,12 +42,15 @@ Mistral-7B is the engine for deep reasoning and complex tool-use within the Nexu
 
 Rerankers are critical for high-accuracy RAG (Retrieval-Augmented Generation). By identifying the most relevant context before LLM generation, they significantly reduce hallucinations.
 
-### BGE Reranker Performance Comparison (CPU)
+### BGE Reranker High-Fidelity Metrics (Google Colab CPU)
 
-| Framework | Latency / Pair | Pairs / Second | Memory Usage | Cold Start | Improvement |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| PyTorch (Baseline) | 133.51 ms | 7.49 | 2.26 GB | 0.71 s | - |
-| **OpenVINO (Optimized)** | **33.76 ms** | **29.62** | 2.50 GB | 1.96 s | **🚀 4.0x faster** |
+| Metric | PyTorch (FP32 Baseline) | OpenVINO (Optimized INT8) | Improvement |
+| :--- | :---: | :---: | :---: |
+| **Mean Latency** | 357.27 ms | **195.45 ms** | **⚡ 45% Lower** |
+| **P99 Latency** | 1096.50 ms | **802.30 ms** | **⚡ 27% Lower** |
+| **Throughput** | 2.80 pairs/s | **5.12 pairs/s** | **🚀 +82.8%** |
+| **Memory (Peak)** | 1.95 GB | 3.04 GB | - |
+| **Warmup Time** | 2.94 s | **2.30 s** | - |
 
 ### Reranker Precision Selection Guide
 
