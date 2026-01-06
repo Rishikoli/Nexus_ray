@@ -1,0 +1,55 @@
+<svg width="800" height="300" viewBox="0 0 800 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .component-bg { fill: #0d1117; stroke: #30363d; stroke-width: 1.5; }
+    .kafka-bus { fill: #475569; fill-opacity: 0.1; stroke: #475569; stroke-width: 2; stroke-dasharray: 8 4; }
+    .label-text { font: bold 14px 'Segoe UI', Tahoma, sans-serif; fill: #FFFFFF; text-anchor: middle; }
+    .sub-text { font: 12px 'Segoe UI', Tahoma, sans-serif; fill: #8b949e; text-anchor: middle; }
+    .node-pink { fill: #E11D48; stroke: #fff; stroke-width: 1; }
+    .node-teal { fill: #0D9488; stroke: #fff; stroke-width: 1; }
+  </style>
+
+  <!-- Container -->
+  <rect x="0" y="0" width="800" height="300" rx="16" fill="#030712"/>
+
+  <!-- Orchestrator (The Brain) -->
+  <g transform="translate(325, 40)">
+    <rect width="150" height="60" rx="8" class="component-bg"/>
+    <text x="75" y="35" class="label-text">Orchestrator</text>
+    <text x="75" y="52" class="sub-text">Control Plane (FastAPI)</text>
+  </g>
+
+  <!-- Kafka Bus -->
+  <rect x="50" y="130" width="700" height="40" rx="4" class="kafka-bus"/>
+  <text x="400" y="155" class="label-text" fill="#94A3B8" style="opacity: 0.5;">APACHE KAFKA EVENT MESH</text>
+
+  <!-- Agents (The Swarm) -->
+  <g transform="translate(100, 200)">
+    <rect width="140" height="60" rx="8" class="component-bg" stroke="#E11D48"/>
+    <text x="70" y="30" class="label-text">Agent Worker 01</text>
+    <text x="70" y="47" class="sub-text">Intel® CPU Worker</text>
+  </g>
+
+  <g transform="translate(330, 200)">
+    <rect width="140" height="60" rx="8" class="component-bg" stroke="#E11D48"/>
+    <text x="70" y="30" class="label-text">Agent Worker 02</text>
+    <text x="70" y="47" class="sub-text">Intel® NPU Worker</text>
+  </g>
+
+  <g transform="translate(560, 200)">
+    <rect width="140" height="60" rx="8" class="component-bg" stroke="#E11D48"/>
+    <text x="70" y="30" class="label-text">Agent Worker 03</text>
+    <text x="70" y="47" class="sub-text">Edge Node (Local)</text>
+  </g>
+
+  <!-- Communication Lines -->
+  <path d="M400 100V130" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M170 200V170" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M400 200V170" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M630 200V170" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#94A3B8" />
+    </marker>
+  </defs>
+</svg>

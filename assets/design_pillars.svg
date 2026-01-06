@@ -1,0 +1,67 @@
+<svg width="900" height="320" viewBox="0 0 900 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .card-bg { fill: #111827; stroke: #374151; stroke-width: 1; }
+    .accent-crimson { fill: #E11D48; }
+    .accent-graphite { fill: #475569; }
+    .title-text { font: bold 18px 'Segoe UI', Tahoma, sans-serif; fill: #FFFFFF; }
+    .subtitle-text { font: 14px 'Segoe UI', Tahoma, sans-serif; fill: #9CA3AF; }
+    .pillar-label { font: bold 12px 'Segoe UI', Tahoma, sans-serif; fill: #6366F1; letter-spacing: 2px; }
+    .icon-rect { fill: #1F2937; stroke-width: 1; }
+  </style>
+
+  <!-- Container -->
+  <rect x="0" y="0" width="900" height="320" rx="16" fill="#030712"/>
+
+  <text x="40" y="40" class="pillar-label">SYSTEM DESIGN PILLARS</text>
+
+  <!-- Pillar 1: Orchestration -->
+  <g transform="translate(40, 70)">
+    <rect x="0" y="0" width="260" height="210" rx="12" class="card-bg"/>
+    <rect x="0" y="0" width="260" height="5" rx="2" class="accent-crimson"/>
+    
+    <rect x="20" y="30" width="40" height="40" rx="8" class="icon-rect" stroke="#E11D48"/>
+    <!-- DAG Icon -->
+    <circle cx="30" cy="45" r="3" fill="#E11D48"/>
+    <circle cx="50" cy="45" r="3" fill="#E11D48"/>
+    <circle cx="40" cy="55" r="3" fill="#E11D48"/>
+    <path d="M33 45H47M40 48V52" stroke="#E11D48" stroke-width="1.5"/>
+
+    <text x="20" y="95" class="title-text">Orchestration</text>
+    <text x="20" y="120" class="subtitle-text">Custom DAG Engine</text>
+    <text x="20" y="145" class="subtitle-text">• Parallel Task Execution</text>
+    <text x="20" y="165" class="subtitle-text">• Deterministic Flow</text>
+    <text x="20" y="185" class="subtitle-text">• State Persistence</text>
+  </g>
+
+  <!-- Pillar 2: Messaging -->
+  <g transform="translate(320, 70)">
+    <rect x="0" y="0" width="260" height="210" rx="12" class="card-bg"/>
+    <rect x="0" y="0" width="260" height="5" rx="2" class="accent-graphite"/>
+
+    <rect x="20" y="30" width="40" height="40" rx="8" class="icon-rect" stroke="#475569"/>
+    <!-- Kafka Icon -->
+    <path d="M30 40H50M30 50H50M30 60H50" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+
+    <text x="20" y="95" class="title-text">Messaging</text>
+    <text x="20" y="120" class="subtitle-text">Apache Kafka Mesh</text>
+    <text x="20" y="145" class="subtitle-text">• Decoupled Analytics</text>
+    <text x="20" y="165" class="subtitle-text">• Event Immutability</text>
+    <text x="20" y="185" class="subtitle-text">• Massive Scalability</text>
+  </g>
+
+  <!-- Pillar 3: Inference -->
+  <g transform="translate(600, 70)">
+    <rect x="0" y="0" width="260" height="210" rx="12" class="card-bg"/>
+    <rect x="0" y="0" width="260" height="5" rx="2" class="accent-crimson"/>
+
+    <rect x="20" y="30" width="40" height="40" rx="8" class="icon-rect" stroke="#E11D48"/>
+    <!-- Intel Icon -->
+    <path d="M28 40V60H32M32 40L45 60V40M45 40H52" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/>
+
+    <text x="20" y="95" class="title-text">Inference</text>
+    <text x="20" y="120" class="subtitle-text">Intel® OpenVINO™</text>
+    <text x="20" y="145" class="subtitle-text">• INT8 Quantization</text>
+    <text x="20" y="165" class="subtitle-text">• Low-Latency RAG</text>
+    <text x="20" y="185" class="subtitle-text">• CPU-Local Edge</text>
+  </g>
+</svg>

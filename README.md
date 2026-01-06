@@ -52,6 +52,7 @@ It combines **DAG-based workflow orchestration**, **optimized local LLM inferenc
   <img src="https://img.shields.io/badge/Frontend-React_Input-94A3B8?style=for-the-badge&logo=react&logoColor=black" />
   <img src="https://img.shields.io/badge/Profiler-Intel_VTune-475569?style=for-the-badge&logo=intel&logoColor=white" />
   <img src="https://img.shields.io/badge/Security-Intel_SGX-475569?style=for-the-badge&logo=intel&logoColor=white" />
+  <img src="https://img.shields.io/badge/Platform-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
 </p>
 
 <br>
@@ -102,6 +103,16 @@ uvicorn src.api.server:app --reload
 cd frontend
 npm install
 npm run dev
+```
+
+### 3. Containerized Deployment (Alternative)
+For isolated production-like environments, use the provided Docker configuration:
+```bash
+# Build the backend image
+docker build -t nexus-ray-backend .
+
+# Run the container
+docker run -p 8000:8000 nexus-ray-backend
 ```
 
 **Access the Live Graph Dashboard at [http://localhost:5173](http://localhost:5173):**

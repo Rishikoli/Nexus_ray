@@ -4,99 +4,123 @@
 **Status**: Final  
 **Date**: January 2026
 
----
+<div align="center">
 
-## 1. Executive Summary
+<br>
 
-**Nexus Ray** is an enterprise-grade AI Agent Framework designed to orchestrate complex, multi-step agentic workflows. Unlike simple agent scripts, Nexus Ray uses a robust **DAG (Directed Acyclic Graph)** execution engine, decoupled **event-driven architecture** (via Apache Kafka), and optimized **local inference** (via Intel® OpenVINO™).
+## Executive Summary
 
-This document outlines the architectural decisions, component design, and integration strategies that enable Nexus Ray to meet the requirements of scalable, audit-ready AI systems.
+**Nexus Ray** is a specialized agentic AI framework designed to orchestrate complex, multi-step workflows with mathematical precision. 
 
----
+By integrating a robust **Directed Acyclic Graph (DAG)** execution engine with **Apache Kafka**'s event-driven mesh and **Intel® OpenVINO™** optimized inference, Nexus Ray enables high-performance local AI orchestration that is secure, audit-ready, and deployment-stable.
 
-## 2. High-Level Architecture
+<br>
 
-The system follows a layered architecture pattern, separating ingress, orchestration, execution, and storage.
+![Design Pillars](../assets/design_pillars.svg)
+
+<br>
+
+</div>
+
+## 1. High-Level Architecture
+
+The system follows a modular, layered architecture pattern to ensure separation of concerns and massive horizontal scalability.
 
 <p align="center">
   <img src="../assets/architecture_diagram.svg" width="100%" alt="Nexus Ray Architecture">
 </p>
 
-### 2.1 Core Layers
+### 1.1 Distributed Scaling Architecture
+The system is built to scale from a single workstation to a global industrial cluster. By using **Apache Kafka** as the event backbone, the Orchestrator can control a decentralized swarm of specialized workers across varying Intel® hardware architectures.
 
-1.  **Interface Layer ("Ingress")**: Managed by a **FastAPI** backend, this layer handles flow definitions, triggers executions, and provides real-time status updates via Server-Sent Events (SSE).
-2.  **Core Orchestrator**: The "Brain" of the system. It parses DAG definitions, manages state transitions, enforces guardrails, and schedules tasks.
-3.  **Execution Runtime**: Decoupled workers that process tasks.
-    *   **OpenVINO LLM**: Dedicated workers running Intel® optimized models.
-    *   **Tools**: Isolated environments for code execution and API calls.
-4.  **Intelligence Buffer ("Memory")**: A vector-based semantic memory system allowing agents to retain context across steps.
-5.  **Observability**: A dedicated monitoring stack (Prometheus/Grafana) fed by Kafka events to audit every decision made by an agent.
+<p align="center">
+  <img src="../assets/scaling_architecture.svg" width="100%" alt="Distributed Scaling Architecture">
+</p>
 
----
+### 1.2 Core Components
 
-## 3. Component Design & Technology Choices
+> ### 🟢 **Interface Layer**
+> Managed by a **FastAPI** backend, this layer provides a high-throughput gateway for flow definitions and real-time status streaming via Server-Sent Events (SSE).
 
-### 3.1 Orchestration: Why DAGs?
-We chose a **DAG-based approach** (over simple state machines) to allow for:
-*   **Parallel Execution**: Agents that don't depend on each other can run simultaneously.
-*   **Determinism**: The flow of data is explicit and traceable.
-*   **Fault Tolerance**: If a node fails, the graph state is preserved, allowing for intelligent retries.
+<br>
 
-### 3.2 Messaging: Why Apache Kafka?
-To meet the "enterprise" requirement, we rejected in-memory queues (like Python's `asyncio.Queue`) in favor of **Apache Kafka**.
-*   **Decoupling**: The Orchestrator doesn't know *who* executes a task, only that it has been published.
-*   **Durability**: Events are persisted, enabling "Time Travel" auditing of agent behavior.
-*   **Scalability**: We can spin up 100 LLM workers to consume from the Kafka topic without changing the core code.
+> ### 🧠 **Core Orchestrator**
+> The centralized brain. It performs cycle detection on incoming DAGs, manages state transitions, and enforces industrial guardrails before task scheduling.
 
-### 3.3 Inference: Why Intel® OpenVINO™?
-Local inference is critical for privacy and cost control. We leverage **Intel® OpenVINO™** to optimize standard Hugging Face models (like Mistral-7B).
-*   **INT8 Quantization**: Reduces memory footprint by ~47% (8.9GB vs 16.5GB).
-*   **Throughput**: Increases token generation speed by ~200% on CPU hardware.
-*   **NPU Support**: Ready for deployment on Intel® Core™ Ultra processors with dedicated NPUs.
+<br>
 
----
+> ### ⚡ **Execution Runtime**
+> Fully decoupled workers that process agentic tasks. These utilize **Intel® OpenVINO™** INT8 models (Mistral-7B / BGE Reranker) for near-instant inference and tool execution.
 
-## 4. Data Flow Lifecycle
+<br>
 
-A typical request flows through the system as follows:
+> ### 🖇️ **Communication Mesh**
+> Powered by **Apache Kafka**, ensuring that every agent decision is persisted and that the system remains responsive even under extreme task loads.
 
-1.  **Submission**: User submits a `WorkflowDefinition` JSON to the REST API.
-2.  **Validation**: Orchestrator validates the DAG structure (checking for cycles).
-3.  **Scheduling**:
-    *   The Graph Engine identifies "Ready" nodes (zero unsatisfied dependencies).
-    *   Task events are published to the `agent-tasks` Kafka topic.
-4.  **Execution**:
-    *   An available **Agent Worker** consumes the event.
-    *   It retrieves context from **Vector Memory**.
-    *   It invokes the **OpenVINO LLM** for reasoning.
-    *   Result is published to `agent-results`.
-5.  **State Update**: Orchestrator marks the node as `COMPLETED` and unlocks downstream nodes.
-6.  **Completion**: When all nodes are done, the final result is stored and the user is notified.
+<br>
 
----
+## 2. Technical Decision Logic
 
-## 5. Security & Guardrails
+### 2.1 Why DAGs? (Orchestration)
+Unlike simple state machines or linear scripts, a **DAG-based approach** ensures:
+*   **Maximum Parallelism**: Independent agents run concurrently on multiple CPU cores.
+*   **Data Integrity**: Data flows are explicit; there are no hidden side effects between agents.
+*   **Predictable Resiliency**: Precise node-level retries if a specific agent tool fails.
 
-Nexus Ray implements a "Trust but Verify" approach:
-*   **Input Guardrails**: All LLM inputs are scanned for injection attacks relative to the domain (e.g., PII masking).
-*   **Output Validation**: Structured outputs (JSON) are validated against Pydantic schemas. If validation fails, a "Reflection Loop" is triggered to self-correct.
-*   **Human-in-the-Loop (HITL)**: Critical nodes can be flagged as `requires_approval`, pausing the DAG until an operator signs off via the UI.
+### 2.2 Why Apache Kafka? (Messaging)
+To achieve deployment readiness, we rejected in-process queues in favor of a distributed event mesh:
+*   **Auditability**: Every agent thought and result is stored as an immutable event.
+*   **Scalability**: Kafka allows us to dynamically spin up 100+ LLM workers across Intel clusters without reconfiguring the core.
 
----
+### 2.3 Why Intel® OpenVINO™? (Inference)
+Local-first inference is the only way to guarantee privacy in Life Sciences and Industrial domains:
+*   **Hardware Acceleration**: Native optimization for Intel® CPUs and NPUs.
+*   **Footprint Reduction**: INT8 quantization provides a **46% memory saving** on production-tier hardware.
 
-## 6. Performance & Optimization
+<br>
 
-Benchmarks managed via `scripts/benchmark_models.py` on Intel® DevCloud.
+## 3. Data Flow Lifecycle
 
-| Metric | Baseline (FP16) | Optimized (INT8) | Gain |
+```mermaid
+graph LR
+    A[Submission] --> B{Validation}
+    B -- Cycle Check --> C[Scheduling]
+    C -- Kafka Event --> D[Execution]
+    D -- Context Recall --> E[OpenVINO LLM]
+    E -- Result --> F[State Update]
+    F -- Flow Logic --> G[Completion]
+    
+    style E fill:#E11D48,stroke:#fff,stroke-width:2px,color:#fff
+    style D fill:#475569,stroke:#fff,stroke-width:2px,color:#fff
+```
+
+<br>
+
+## 4. Security & Guardrails
+
+Nexus Ray implements a "Trust but Verify" security model designed for high-stakes industrial environments.
+
+<p align="center">
+  <img src="../assets/safety_loop.svg" width="100%" alt="Industrial Safety Loop">
+</p>
+
+*   **Domain-Specific Guardrails**: All LLM inputs are filtered for injection and data leakage (PII) before reaching the inference engine.
+*   **Structured Output Validation**: Every agent result is verified against a strict Pydantic schema.
+*   **Human-in-the-Loop (HITL)**: Critical industrial nodes (e.g., Yield Optimization Approval) pause execution until an operator signs off via the dashboard.
+
+<br>
+
+## 5. Performance Benchmarks
+
+| Metric | Baseline | OpenVINO (INT8) | Improvement |
 | :--- | :---: | :---: | :---: |
-| **Throughput** | 0.07 tok/s | 2.28 tok/s | **🚀 +3157%** |
-| **Memory** | 16.5 GB | 8.9 GB | **📉 -46%** |
-| **Startup** | 14.5 s | 8.2 s | **⚡ -43%** |
+| **Mean Throughput** | 0.07 tokens/s | 2.28 tokens/s | **+3157%** |
+| **Peak Memory Load** | 16.5 GB | 8.9 GB | **-46%** |
+| **Inference Latency** | 357.2 ms | 195.4 ms | **-45%** |
 
----
+<br>
 
-## 7. Future Roadmap
+## 6. Future Roadmap
 
-*   **Federated Learning**: Allowing agents to update weights based on user corrections.
-*   **Swarm Protocol**: Implementing gossip-based communication for leaderless agent swarms.
+*   **Confidential Swarms**: Integrating **Intel® SGX** for end-to-end encrypted agent memory.
+*   **Cross-Silicon Scaling**: Using **Intel® oneAPI** to support automatic fallback to Intel® Arc™ GPUs.

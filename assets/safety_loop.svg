@@ -1,0 +1,73 @@
+<svg width="800" height="240" viewBox="0 0 800 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .node-bg { fill: #0d1117; stroke: #30363d; stroke-width: 1.5; }
+    .arrow { stroke: #475569; stroke-width: 2; fill: none; }
+    .label-text { font: bold 12px 'Segoe UI', Tahoma, sans-serif; fill: #FFFFFF; text-anchor: middle; }
+    .sub-text { font: 10px 'Segoe UI', Tahoma, sans-serif; fill: #8b949e; text-anchor: middle; }
+    .highlight-pink { fill: #E11D48; }
+    .highlight-teal { fill: #0D9488; }
+    .highlight-amber { fill: #D97706; }
+  </style>
+
+  <!-- Container -->
+  <rect x="0" y="0" width="800" height="240" rx="16" fill="#030712"/>
+
+  <!-- Step 1: Input -->
+  <g transform="translate(40, 60)">
+    <rect width="120" height="80" rx="8" class="node-bg"/>
+    <text x="60" y="40" class="label-text">Industrial Input</text>
+    <text x="60" y="55" class="sub-text">Workflow Definition</text>
+    <path d="M40 70H80" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M165 100H195" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 2: Pydantic Shield -->
+  <g transform="translate(200, 60)">
+    <rect width="120" height="80" rx="8" class="node-bg" stroke="#E11D48"/>
+    <text x="60" y="40" class="label-text">Pydantic Shield</text>
+    <text x="60" y="55" class="sub-text">Schema Validation</text>
+    <path d="M45 70L55 80L75 60" stroke="#E11D48" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M325 100H355" class="arrow"/>
+
+  <!-- Step 3: OpenVINO Reasoning -->
+  <g transform="translate(360, 60)">
+    <rect width="120" height="80" rx="8" class="node-bg" stroke="#E11D48"/>
+    <text x="60" y="40" class="label-text">Inference Loop</text>
+    <text x="60" y="55" class="sub-text">OpenVINO Optimizer</text>
+    <circle cx="60" cy="70" r="10" stroke="#E11D48" stroke-width="2" stroke-dasharray="4 2"/>
+  </g>
+
+  <!-- Arrow 3 -->
+  <path d="M485 100H515" class="arrow"/>
+
+  <!-- Step 4: Validation Gate -->
+  <g transform="translate(520, 60)">
+    <rect width="120" height="80" rx="8" class="node-bg" stroke="#D97706"/>
+    <text x="60" y="40" class="label-text">Validation Gate</text>
+    <text x="60" y="55" class="sub-text">Safety Guardrails</text>
+    <path d="M45 65L75 75M75 65L45 75" stroke="#D97706" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Arrow 4 -->
+  <path d="M645 100H675" class="arrow"/>
+
+  <!-- Step 5: HITL Sign-off -->
+  <g transform="translate(680, 60)">
+    <rect width="100" height="80" rx="8" class="node-bg" stroke="#0D9488"/>
+    <text x="50" y="40" class="label-text">HITL Sign-off</text>
+    <text x="50" y="55" class="sub-text">Human Operator</text>
+    <path d="M35 70H65M50 65V75" stroke="#0D9488" stroke-width="2"/>
+  </g>
+
+  <!-- Marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#475569" />
+    </marker>
+  </defs>
+</svg>
