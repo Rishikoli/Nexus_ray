@@ -1,0 +1,146 @@
+<svg viewBox="0 0 900 950" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text { fill: #F8FAFC; font-family: ui-monospace, 'Cascadia Code', monospace; font-size: 11px; text-anchor: middle; font-weight: 600; }
+    .text-branch { fill: #94A3B8; font-family: sans-serif; font-size: 9px; text-anchor: middle; font-weight: bold; }
+    .node { fill: #0C0A09; stroke: #404040; stroke-width: 1.5; rx: 5; }
+    .section-label { fill: #94A3B8; font-family: sans-serif; font-size: 10px; font-weight: bold; letter-spacing: 1.5px; text-transform: uppercase; }
+    
+    .crimson { stroke: #DC143C; stroke-width: 2; }
+    .purple { stroke: #D299FF; stroke-width: 2; }
+    
+    /* Animations */
+    @keyframes heartbeat { 
+      0%, 100% { opacity: 1; stroke-width: 2; } 
+      50% { opacity: 0.7; stroke-width: 3; filter: drop-shadow(0 0 3px #DC143C); } 
+    }
+    .pulse { animation: heartbeat 2.5s ease-in-out infinite; }
+    
+    @keyframes thinking { 
+      0%, 100% { fill: #0C0A09; filter: drop-shadow(0 0 2px #DC143C); } 
+      50% { fill: #DC143C15; filter: drop-shadow(0 0 10px #DC143C); } 
+    }
+    .think { animation: thinking 1.5s ease-in-out infinite; }
+
+    /* Flowing Packets */
+    .packet-crimson { fill: #DC143C; filter: drop-shadow(0 0 3px #DC143C); animation: flow 3.5s linear infinite; }
+    .packet-purple { fill: #D299FF; filter: drop-shadow(0 0 3px #D299FF); animation: flow 3s linear infinite; }
+    
+    @keyframes flow {
+      0% { offset-distance: 0%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; }
+    }
+
+    .arrow { fill: #404040; }
+  </style>
+
+  <rect width="100%" height="100%" fill="#0C0A09" />
+
+  <defs>
+    <marker id="head" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="arrow" />
+    </marker>
+  </defs>
+
+  <!-- Input & Validation -->
+  <text x="450" y="30" class="section-label">Wafer Input &amp; Prep</text>
+  <line x1="330" y1="35" x2="570" y2="35" stroke="#404040" stroke-width="0.5" stroke-dasharray="4" />
+  
+  <g transform="translate(375, 60)">
+    <rect width="150" height="40" class="node" />
+    <text x="75" y="25" class="text">Wafer Data Input</text>
+  </g>
+  <path d="M450 100 V140" stroke="#404040" stroke-width="1.5" marker-end="url(#head)" fill="none" />
+  <circle r="2.5" class="packet-crimson" style="offset-path: path('M450 100 V140');" />
+
+  <g transform="translate(375, 140)">
+    <rect width="150" height="40" class="node crimson pulse" />
+    <text x="75" y="25" class="text">Validate Input</text>
+  </g>
+  
+  <path d="M450 180 V220" stroke="#404040" stroke-width="1.5" marker-end="url(#head)" fill="none" />
+  
+  <g transform="translate(375, 220)">
+    <rect width="150" height="40" class="node crimson pulse" />
+    <text x="75" y="25" class="text">Preprocess Data</text>
+  </g>
+
+  <!-- Parallel Analysis -->
+  <path d="M450 260 V320" stroke="#404040" stroke-width="1.5" fill="none" />
+  <path d="M450 320 L200 355" stroke="#404040" stroke-width="1.2" marker-end="url(#head)" fill="none" />
+  <path d="M450 320 L450 355" stroke="#404040" stroke-width="1.2" marker-end="url(#head)" fill="none" />
+  <path d="M450 320 L700 355" stroke="#404040" stroke-width="1.2" marker-end="url(#head)" fill="none" />
+
+  <text x="450" y="310" class="section-label">Yield Analysis Agents</text>
+  
+  <g transform="translate(125, 360)">
+    <text x="75" y="-10" class="text-branch">AGENT 1</text>
+    <rect width="150" height="50" class="node purple" />
+    <text x="75" y="30" class="text">Defect Detection</text>
+  </g>
+  <g transform="translate(375, 360)">
+    <text x="75" y="-10" class="text-branch">AGENT 2</text>
+    <rect width="150" height="50" class="node purple" />
+    <text x="75" y="30" class="text">Historical Analysis</text>
+  </g>
+  <g transform="translate(625, 360)">
+    <text x="75" y="-10" class="text-branch">AGENT 3</text>
+    <rect width="150" height="50" class="node purple" />
+    <text x="75" y="30" class="text">Pattern Recognition</text>
+  </g>
+
+  <!-- Consensus & Root Cause -->
+  <g transform="translate(0, 460)"> 
+    <text x="450" y="0" class="section-label">Engine Reasoning</text>
+    <line x1="330" y1="5" x2="570" y2="5" stroke="#404040" stroke-width="0.5" stroke-dasharray="4" />
+
+    <path d="M200 -50 Q450 30 450 50" stroke="#404040" stroke-width="1.5" fill="none" marker-end="url(#head)" />
+    <circle r="2.2" class="packet-purple" style="offset-path: path('M200 -50 Q450 30 450 50');" />
+
+    <path d="M450 -50 V50" stroke="#404040" stroke-width="1.5" fill="none" marker-end="url(#head)" />
+    <circle r="2.2" class="packet-purple" style="offset-path: path('M450 -50 V50'); animation-delay: 0.5s;" />
+
+    <path d="M700 -50 Q450 30 450 50" stroke="#404040" stroke-width="1.5" fill="none" marker-end="url(#head)" />
+    <circle r="2.2" class="packet-purple" style="offset-path: path('M700 -50 Q450 30 450 50'); animation-delay: 1s;" />
+
+    <g transform="translate(325, 50)">
+      <rect width="250" height="45" class="node crimson think" />
+      <text x="125" y="20" class="text" style="fill: #DC143C;">OpenVINO Consensus</text>
+      <text x="125" y="35" class="text" style="fill: #DC143C; font-size: 9px;">Root Cause Identification</text>
+    </g>
+
+    <path d="M450 95 V135" stroke="#404040" stroke-width="1.5" marker-end="url(#head)" fill="none" />
+    
+    <g transform="translate(350, 135)">
+      <rect width="200" height="40" class="node crimson pulse" />
+      <text x="100" y="25" class="text">Optimization Recipes</text>
+    </g>
+  </g>
+
+  <!-- Approvals & Report -->
+  <g transform="translate(0, 680)">
+    <text x="450" y="0" class="section-label">Control &amp; Delivery</text>
+    <line x1="330" y1="5" x2="570" y2="5" stroke="#404040" stroke-width="0.5" stroke-dasharray="4" />
+
+    <path d="M450 -45 V30" stroke="#404040" stroke-width="1.5" marker-end="url(#head)" fill="none" />
+
+    <g transform="translate(375, 30)">
+      <rect width="150" height="40" class="node purple pulse" />
+      <text x="75" y="25" class="text">HITL: Engineer Approval</text>
+    </g>
+    <path d="M450 70 V110" stroke="#404040" stroke-width="1.5" marker-end="url(#head)" fill="none" />
+
+    <g transform="translate(375, 110)">
+      <rect width="150" height="40" class="node" />
+      <text x="75" y="25" class="text">Generate Final Report</text>
+    </g>
+    <path d="M450 150 V190" stroke="#404040" stroke-width="1.5" marker-end="url(#head)" fill="none" />
+    <circle r="2.5" class="packet-crimson" style="offset-path: path('M450 150 V190');" />
+
+    <g transform="translate(375, 190)">
+      <rect width="150" height="40" class="node crimson pulse" />
+      <text x="75" y="25" class="text">Return Insights</text>
+    </g>
+  </g>
+</svg>

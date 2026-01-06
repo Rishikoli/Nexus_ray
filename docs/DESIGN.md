@@ -19,7 +19,7 @@ This document outlines the architectural decisions, component design, and integr
 The system follows a layered architecture pattern, separating ingress, orchestration, execution, and storage.
 
 <p align="center">
-  <img src="../assets/architecture.svg" width="100%" alt="Nexus Ray Architecture">
+  <img src="../assets/architecture_diagram.svg" width="100%" alt="Nexus Ray Architecture">
 </p>
 
 ### 2.1 Core Layers
@@ -90,9 +90,9 @@ Benchmarks managed via `scripts/benchmark_models.py` on Intel® DevCloud.
 
 | Metric | Baseline (FP16) | Optimized (INT8) | Gain |
 | :--- | :---: | :---: | :---: |
-| **Throughput** | 1.2 tok/s | 2.28 tok/s | **+90%** |
-| **Memory** | 16.5 GB | 8.9 GB | **-46%** |
-| **Startup** | 14.5s | 8.2s | **-43%** |
+| **Throughput** | 0.07 tok/s | 2.28 tok/s | **🚀 +3157%** |
+| **Memory** | 16.5 GB | 8.9 GB | **📉 -46%** |
+| **Startup** | 14.5 s | 8.2 s | **⚡ -43%** |
 
 ---
 

@@ -39,7 +39,7 @@ graph TD
 ### Workflow DAG
 
 <p align="center">
-  <img src="../assets/protein_drug_flow.svg" alt="Protein-Drug Discovery Flow" width="800">
+  <img src="../assets/protein_architecture.svg" alt="Protein-Drug Discovery Flow" width="800">
   <br>
   <em>Caption: 7-agent workflow for lead candidate discovery and drugability assessment</em>
 </p>
@@ -55,9 +55,6 @@ graph TD
 </p>
 
 ### Live Execution Screenshots
-
-> [!NOTE]
-> **Screenshots Coming Soon**: The following screenshots will demonstrate the Protein-Drug Discovery workflow in action with OpenVINO LLM inference.
 
 **1. Workflow Dashboard**
 
@@ -133,7 +130,7 @@ graph TD
 ### Workflow DAG
 
 <p align="center">
-  <img src="../assets/semiconductor_yield_flow.svg" alt="Semiconductor Yield Flow" width="800">
+  <img src="../assets/semiconductor_architecture.svg" alt="Semiconductor Yield Flow" width="800">
   <br>
   <em>Caption: 7-agent DAG for yield optimization showing parallel analysis branches</em>
 </p>
@@ -204,8 +201,6 @@ The DAG scheduler determines the following execution batches:
 
 ### Live Execution Screenshots
 
-> [!NOTE]
-> **Screenshots Coming Soon**: The following screenshots will demonstrate the Semiconductor Yield Optimization workflow in action.
 
 **1. Workflow Initialization**
 <!-- TODO: Add screenshot of dashboard showing workflow start with all 7 agents -->
@@ -215,28 +210,11 @@ The DAG scheduler determines the following execution batches:
   <em>Caption: Dashboard showing the Semiconductor workflow initialization with all agents in the DAG</em>
 </p>
 
-**2. Parallel Analysis in Progress**
-<!-- TODO: Add screenshot showing Batch 3 parallel execution (Defect Detection, Historical Comparison, Pattern Analysis, Spatial Clustering) -->
-<p align="center">
-  <img src="../assets/screenshots/semiconductor_parallel.png" alt="Parallel Analysis" width="800">
-  <br>
-  <em>Caption: Live view of 4 agents running in parallel during the analysis phase</em>
-</p>
-
-**3. HITL Engineer Approval Gate**
-<!-- TODO: Add screenshot of HITL approval popup/modal requesting engineer approval -->
+**2. HITL Engineer Approval Gate**
 <p align="center">
   <img src="../assets/screenshots/semiconductor_hitl.png" alt="HITL Approval Gate" width="800">
   <br>
   <em>Caption: Human-in-the-Loop gate requesting engineer approval before recipe deployment</em>
-</p>
-
-**4. Final Optimization Results**
-<!-- TODO: Add screenshot of completed workflow with optimization recommendations and metrics -->
-<p align="center">
-  <img src="../assets/screenshots/semiconductor_results.png" alt="Final Results" width="800">
-  <br>
-  <em>Caption: Completed workflow showing yield improvement recommendations and confidence scores</em>
 </p>
 
 ---

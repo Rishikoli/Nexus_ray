@@ -153,10 +153,6 @@ Nexus Ray includes a suite of specialized tools for developers and researchers:
 ---
 
 ## Documentation
-<h3 align="center"> 
-  <a href="docs/quickstart_benchmarking.md">Benchmarking Guide</a> | 
-  <a href="docs/dag_flows.md">DAG Workflows</a>
-</h3>
 
 ### Formal Deliverables
 

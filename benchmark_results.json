@@ -1,0 +1,16 @@
+[
+  {
+    "model": "bge-reranker-ov",
+    "avg_latency_ms": 33.76,
+    "pairs_per_second": 29.62,
+    "cold_start_time": 1.96,
+    "memory_mb": 2504.33
+  },
+  {
+    "model": "bge-reranker-fp16",
+    "avg_latency_ms": 133.51,
+    "pairs_per_second": 7.49,
+    "cold_start_time": 0.71,
+    "memory_mb": 2262.69
+  }
+]
