@@ -46,6 +46,16 @@ Rerankers are critical for high-accuracy RAG (Retrieval-Augmented Generation). B
 
 ![BGE Reranker Performance Multiplier](../assets/Reranker_performance.svg)
 
+#### Detailed Technical Metrics (Google Colab CPU)
+
+| Metric | PyTorch (FP32 Baseline) | OpenVINO (Optimized INT8) | Improvement |
+| :--- | :---: | :---: | :---: |
+| **Mean Latency** | 357.27 ms | **195.45 ms** | **45% Lower** |
+| **P99 Latency** | 1096.50 ms | **802.30 ms** | **27% Lower** |
+| **Throughput** | 2.80 pairs/s | **5.12 pairs/s** | **+82.8%** |
+| **Memory (Peak)** | 1.95 GB | 3.04 GB | - |
+| **Warmup Time** | 2.94 s | **2.30 s** | - |
+
 ### Reranker Precision Selection Guide
 
 | Use Case | Recommended Model |
