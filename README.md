@@ -50,6 +50,8 @@ It combines **DAG-based workflow orchestration**, **optimized local LLM inferenc
   <img src="https://img.shields.io/badge/Messaging-Apache_Kafka-475569?style=for-the-badge&logo=apachekafka&logoColor=white" />
   <img src="https://img.shields.io/badge/Vector_DB-ChromaDB-64748B?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Frontend-React_Input-94A3B8?style=for-the-badge&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/Profiler-Intel_VTune-475569?style=for-the-badge&logo=intel&logoColor=white" />
+  <img src="https://img.shields.io/badge/Security-Intel_SGX-475569?style=for-the-badge&logo=intel&logoColor=white" />
 </p>
 
 <br>
@@ -187,6 +189,19 @@ Nexus Ray includes a suite of specialized tools for developers and researchers:
 <br>
 
 </div>
+
+<br>
+
+<br>
+
+## Intel® Technology Roadmap: The Path to Confidential AI
+
+To ensure Nexus Ray remains at the forefront of secure, industrial-grade agent orchestration, our roadmap focuses on deep integration with the Intel® software and hardware ecosystem:
+
+*   **Confidential Agent Coordination (Intel® SGX)**: Implementing **Intel® Software Guard Extensions** to create secure enclaves for agent execution. This ensures that sensitive medical data in Life Sciences and proprietary yield parameters in Semiconductor manufacturing remain encrypted even during active processing.
+*   **Cross-Architecture Scaling (Intel® oneAPI)**: Leveraging the **Intel® oneAPI** abstraction layer to seamlessly scale Nexus Ray's multi-agent logic from Xeon® CPUs to Intel® Arc™ and Data Center GPUs without codebase modifications.
+*   **Enterprise Swarm Orchestration (Intel® Tiber™ AI Cloud)**: Providing a native deployment path to **Intel® Tiber™ AI Cloud** for orchestrating massive-scale industrial agent swarms across global infrastructure.
+*   **Sustainability & Green AI**: By optimizing for high-throughput execution on **Intel® CPUs + OpenVINO™**, Nexus Ray significantly reduces the carbon footprint and energy overhead compared to traditional GPU-reliant agent frameworks.
 
 <br>
 

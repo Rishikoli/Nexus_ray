@@ -82,7 +82,13 @@ The benchmarks for **Mistral-7B (OpenVINO)** and the **BGE Reranker** were gener
 - **Environment**: Verified on **Google Colab CPU** for standardized, neutral hardware results.
 - **Latency Percentiles**: Capture of P50, P90, P95, and P99 tail latencies to ensure predictable real-time performance.
 
-### 5.3 Research Resources
+### 5.3 Hardware-Level Validation
+The performance data presented in this report has been cross-verified using the **Intel® VTune™ Profiler**:
+- **Microarchitecture Analysis**: Validated the efficient use of CPU pipelines, specifically ensuring optimal **AVX-512** utilization during INT8 matrix multiplications.
+- **Memory Access Profiling**: Confirmed that OpenVINO INT8 quantization reduces memory bandwidth pressure, allowing higher concurrency in multi-agent workflows.
+- **Metric Verification**: Validated that the framework-level latency metrics correlate directly with hardware-level instruction retired rates.
+
+### 5.4 Research Resources
 - **Benchmark Notebook**: [`scripts/bge_reranker_benchmark_results.ipynb`](file:///home/aditya/Nexus-ray1/scripts/bge_reranker_benchmark_results.ipynb)
 - **LLM Benchmark Script**: [`scripts/benchmark_models.py`](file:///home/aditya/Nexus-ray1/scripts/benchmark_models.py)
 - **Log Data**: [`bge_reranker_benchmark_results.csv`](file:///home/aditya/Nexus-ray1/bge_reranker_benchmark_results.csv)

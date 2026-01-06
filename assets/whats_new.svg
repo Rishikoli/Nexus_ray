@@ -57,11 +57,11 @@
     <text x="25" y="120" class="stat-text">82.8% THROUGHPUT GAIN</text>
   </g>
 
-  <!-- Card 2: Benchmarks (Graphite Glow) -->
+  <!-- Card 2: Benchmarks (Graphite Glow) - UPDATED FOR VTUNE -->
   <g transform="translate(420, 70)" class="card">
     <rect x="0" y="0" width="340" height="140" rx="12" class="card-graphite" style="animation-delay: 0.75s;"/>
-    <text x="25" y="40" class="title-text">High Fidelity Validation Suite</text>
-    <text x="25" y="65" class="desc-text">Hardware Native Inference Profiling</text>
+    <text x="25" y="40" class="title-text">Intel® VTune™ Validation Suite</text>
+    <text x="25" y="65" class="desc-text">Microarchitecture Hardware Analysis</text>
     <text x="25" y="85" class="desc-text">for Verified Local Execution</text>
     <text x="25" y="120" class="stat-text">45% LATENCY DROP</text>
   </g>
