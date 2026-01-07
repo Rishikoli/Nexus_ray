@@ -122,5 +122,4 @@ Nexus Ray implements a "Trust but Verify" security model designed for high-stake
 
 ## 6. Future Roadmap
 
-*   **Confidential Swarms**: Integrating **Intel® SGX** for end-to-end encrypted agent memory.
-*   **Cross-Silicon Scaling**: Using **Intel® oneAPI** to support automatic fallback to Intel® Arc™ GPUs.
+**Sustainability & Green AI**: Scaling high-throughput execution on **Intel® CPUs + OpenVINO™** to further reduce the carbon footprint compared to traditional GPU frameworks.
