@@ -23,6 +23,12 @@
 **Nexus Ray** is a **production-ready framework** for building autonomous, multi-agent AI systems.  
 It combines **DAG-based workflow orchestration**, **optimized local LLM inference using Intel® OpenVINO™**, and an **event-driven architecture** to deliver scalable and observable AI pipelines.
 
+<div align="center">
+
+![Architectural Dominance Profile](assets/framework_radar.svg)
+
+</div>
+
 **Designed for:**
 *   Agentic AI systems
 *   Research & industry automation

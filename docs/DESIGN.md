@@ -14,6 +14,12 @@
 
 By integrating a robust **Directed Acyclic Graph (DAG)** execution engine with **Apache Kafka**'s event-driven mesh and **Intel® OpenVINO™** optimized inference, Nexus Ray enables high-performance local AI orchestration that is secure, audit-ready, and deployment-stable.
 
+<div align="center">
+
+![Architectural Dominance Profile](../assets/framework_radar.svg)
+
+</div>
+
 <br>
 
 ![Design Pillars](../assets/design_pillars.svg)
