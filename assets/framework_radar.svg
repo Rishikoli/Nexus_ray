@@ -1,12 +1,16 @@
 <svg width="650" height="500" viewBox="0 0 650 500" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="4" result="blur" />
+    <filter id="nexusGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="baselineGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
     <linearGradient id="nexusGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00C4FF" stop-opacity="0.8" />
-      <stop offset="100%" stop-color="#0066FF" stop-opacity="0.6" />
+      <stop offset="0%" stop-color="#F43F5E" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#FB7185" stop-opacity="0.6" />
     </linearGradient>
   </defs>
 
@@ -15,7 +19,7 @@
 
   <!-- Radar Grid -->
   <g transform="translate(325, 275)">
-    <!-- Pentagon Rings (Subtle) -->
+    <!-- Pentagon Rings (Darker/Subtle for Contrast) -->
     <path d="M0 -36 34 -11 21 30 -21 30 -34 -11 Z" fill="none" stroke="#1e293b" stroke-width="1"/>
     <path d="M0 -72 68 -22 42 60 -42 60 -68 -22 Z" fill="none" stroke="#1e293b" stroke-width="1"/>
     <path d="M0 -108 102 -33 63 90 -63 90 -102 -33 Z" fill="none" stroke="#1e293b" stroke-width="1"/>
@@ -29,33 +33,34 @@
     <line x1="0" y1="0" x2="-106" y2="150" stroke="#1e293b" stroke-width="1"/>
     <line x1="0" y1="0" x2="-171" y2="-56" stroke="#1e293b" stroke-width="1"/>
 
-    <!-- Labels (Repositioned to avoid overlap) -->
+    <!-- Labels -->
     <text x="0" y="-195" text-anchor="middle" fill="#f1f5f9" font-size="11" font-weight="bold" font-family="sans-serif">ORCHESTRATION DEPTH</text>
     <text x="180" y="-56" text-anchor="start" fill="#f1f5f9" font-size="11" font-weight="bold" font-family="sans-serif">HARDWARE OPTIMIZATION</text>
     <text x="115" y="165" text-anchor="start" fill="#f1f5f9" font-size="11" font-weight="bold" font-family="sans-serif">AUDIT RELIABILITY</text>
     <text x="-115" y="165" text-anchor="end" fill="#f1f5f9" font-size="11" font-weight="bold" font-family="sans-serif">INDUSTRIAL SAFETY</text>
     <text x="-180" y="-56" text-anchor="end" fill="#f1f5f9" font-size="11" font-weight="bold" font-family="sans-serif">SUSTAINABILITY</text>
 
-    <!-- Generic Framework Area (Now drawn AFTER Nexus Ray for visibility, with high contrast stroke) -->
-    <!-- First draw Nexus Ray -->
-    <path d="M0,-170 L160,-52 L95,135 L-95,135 L-160,-52 Z" fill="url(#nexusGradient)" fill-opacity="0.55" stroke="#00C4FF" stroke-width="2.5" filter="url(#glow)">
-      <animate attributeName="fill-opacity" values="0.45;0.65;0.45" dur="4s" repeatCount="indefinite" />
+    <!-- Layer 1: Nexus Ray (Pink) -->
+    <path d="M0,-170 L160,-52 L95,135 L-95,135 L-160,-52 Z" fill="url(#nexusGradient)" fill-opacity="0.65" stroke="#F43F5E" stroke-width="2.5" filter="url(#nexusGlow)">
+      <animate attributeName="fill-opacity" values="0.55;0.75;0.55" dur="4s" repeatCount="indefinite" />
     </path>
 
-    <!-- Then draw Generic (High Visibility) -->
-    <path d="M0,-54 L68,-22 L42,60 L-32,45 L-51,-17 Z" fill="#94a3b8" fill-opacity="0.2" stroke="#ffffff" stroke-width="2" stroke-dasharray="4" style="filter: drop-shadow(0 0 2px #fff);"/>
+    <!-- Layer 2: Generic Framework (High Contrast White) -->
+    <!-- We use a thick black stroke under the white stroke to make it visible against pink -->
+    <path d="M0,-54 L68,-22 L42,60 L-32,45 L-51,-17 Z" fill="none" stroke="#000000" stroke-width="4" stroke-opacity="0.3"/>
+    <path d="M0,-54 L68,-22 L42,60 L-32,45 L-51,-17 Z" fill="white" fill-opacity="0.15" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="4" filter="url(#baselineGlow)"/>
 
     <!-- Legend -->
     <g transform="translate(-290, 190)">
-      <rect width="10" height="10" fill="#00C4FF" rx="2"/>
+      <rect width="10" height="10" fill="#F43F5E" rx="2"/>
       <text x="18" y="9" fill="#f1f5f9" font-size="11" font-family="sans-serif">Nexus Ray Framework</text>
       
-      <rect x="0" y="20" width="10" height="10" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="2" rx="2"/>
+      <rect x="0" y="20" width="10" height="10" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="2" rx="2"/>
       <text x="18" y="29" fill="#f1f5f9" font-size="11" font-family="sans-serif">Generic Agent Framework (Baseline)</text>
     </g>
   </g>
 
   <!-- Title -->
   <text x="25" y="35" fill="#f1f5f9" font-size="13" font-weight="bold" letter-spacing="2" font-family="sans-serif">ARCHITECTURAL DOMINANCE PROFILE</text>
-  <line x1="25" y1="45" x2="250" y2="45" stroke="#00C4FF" stroke-width="2" stroke-opacity="0.5" />
+  <line x1="25" y1="45" x2="250" y2="45" stroke="#F43F5E" stroke-width="2" stroke-opacity="0.5" />
 </svg>
